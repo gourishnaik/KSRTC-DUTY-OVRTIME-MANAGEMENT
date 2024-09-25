@@ -1,0 +1,22 @@
+.is-invalid {
+    border-color: red;
+    /* background: url(../../../assets/ambari.jpg); */
+}
+.left-card{
+    /* border: 1px solid gray;
+    padding: 45px;
+    margin-top: 16rem;
+    border-radius: 40px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
+    border: 1px solid gray;
+    padding: 37px;
+    margin-top: 14rem;
+    width: 70%;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-left: 10rem;
+}
+.uppercase-input {
+    text-transform: uppercase;
+  }
+  

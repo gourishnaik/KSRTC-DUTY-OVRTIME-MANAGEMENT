@@ -1,0 +1,104 @@
+<nav class="navbar navbar-light bg-primary"style="background-color: #ff7100!important;
+color: aliceblue!imortant;
+font-weight: 700!important;
+">
+  <img src="https://pbs.twimg.com/profile_images/1411910368192995334/pg6wZAlk_400x400.jpg" alt="Logo"style="height: 80px;
+  margin-left: 10px;
+  width: 85px;border-radius: 85px;">
+  <a style="color: white;margin-left: 5px;" class="navbar-brand text-center">NWKRTC EMPLOYEE OT MANAGEMENT SYSTEM</a>
+  <button routerLink="/view-overtime" style="margin-right: 10px;" class="btn btn-dark">VIEW EMPLOYEE OT</button>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-6 mt-3">
+        <img src="../../../assets/ambari.jpg" alt="Description of Image"class="img-fluid"style="height:100vh;border-radius:4rem">
+
+      </div>
+      
+      <div class="col-6 mt-3">
+         
+<div class="left-card">
+  
+  <!-- Search Box -->
+  <div class="container-fluid">
+  
+    <div class="row justify-content-center mt-2">
+      <img src="https://pbs.twimg.com/profile_images/1411910368192995334/pg6wZAlk_400x400.jpg" alt="Logo" style="height: 60px;
+  width: 85px;">
+
+      <h5 class="text-center">Create Emplotee Id</h5>
+      <div class="col-md-12 d-flex justify-content-center mt-4">
+      
+
+        <!-- <input type="text" [(ngModel)]="EmployeeId" class="form-control me-2" placeholder="Enter Employee ID" style="max-width: 300px;" /> -->
+        <input type="text" 
+        [(ngModel)]="EmployeeId" 
+        class="form-control me-2" 
+        placeholder="Enter Employee ID" 
+        style="max-width: 300px;" 
+        [ngClass]="{'is-invalid': !EmployeeId}" />
+      
+
+ 
+      </div>
+
+    </div>
+    
+  </div>
+
+
+  <!-- Table to display filtered duty details -->
+
+
+  <table class="table table-bordered mt-4" *ngIf="filteredDuties.length > 0">
+    <thead>
+      <tr>
+        <th scope="col">SL No</th>
+        <th scope="col">Schedule No</th>
+        <th scope="col">Start time</th>
+        <th scope="col">End Time</th>
+        <th scope="col">Duty hours</th>
+        <th scope="col">OT hours</th>
+        <th scope="col">Night Allowance</th>
+        <th scope="col">KMS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let duty of filteredDuties; let i =index;">
+        <th>{{i+1}}</th>
+        <th scope="row">{{ duty.dutyId }}</th>
+        <td>{{ duty.startTime }}</td>
+        <td>{{ duty.endTime }}</td>
+        <td>{{ duty.dutyHours }}</td>
+        <td>{{ duty.OThours }}</td>
+        <td>{{duty.NightHalt}}</td>
+        <td>{{duty.kms}}</td>
+       
+    
+    </tbody>
+  </table>
+
+  <!-- Message if no results yet -->
+
+<h5 *ngIf="successtxt" style="text-align: center;"class="text-success mt-2">EMPLOYEE ID SAVED SUCCESSFULLY !!</h5>
+  <div class="d-flex justify-content-center">
+    <button style="background: #ff7100 !important;
+    border: none!important;" class="btn btn-success mt-3"(click)="save()"[disabled]="saving">SAVE</button>
+  </div>
+  
+
+</div>
+
+
+
+
+
+
+      </div>
+  </div>
+</div>
+
+<app-loader [isLoading]="isLoading"></app-loader>
+

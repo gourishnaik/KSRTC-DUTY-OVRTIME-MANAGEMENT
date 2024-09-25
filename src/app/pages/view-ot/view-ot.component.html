@@ -1,0 +1,143 @@
+<nav class="navbar navbar-light bg-success"style="background-color: #ff7100!important;
+color: aliceblue!imortant;
+font-weight: 700!important;
+">
+  <img routerLink="/" src="https://pbs.twimg.com/profile_images/1411910368192995334/pg6wZAlk_400x400.jpg" alt="Logo" style="height: 80px;
+  margin-left: 10px;
+  width: 85px;cursor: pointer;border-radius: 85px;">
+    <a style="color: white; margin-left: 5px;" class="navbar-brand text-center">NWKRTC EMPLOYEE OT MANAGEMENT SYSTEM</a>
+    <button routerLink="/" style="margin-right: 10px;" class="btn btn-dark">CREATE EMPLOYEE ID</button>
+</nav>
+
+
+<!-- https://pbs.twimg.com/profile_images/1411910368192995334/pg6wZAlk_400x400.jpg -->
+<div class="container-fluid">
+  <!-- Search Box -->
+  <div class="container-fluid">
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-12 d-flex justify-content-center">
+        <input type="text" [(ngModel)]="employeeIdSearch" class="form-control me-2" placeholder="Enter Employee ID" style="max-width: 300px;" />
+        <button class="btn btn-primary" (click)="searchEmployeeById()">Search</button>
+      </div>
+
+      <div class="col-md-12 d-flex justify-content-center mt-4"*ngIf="AllDuty">
+        <input type="text" [(ngModel)]="dutyIdSearch" class="form-control me-2" placeholder="Enter Schedule No." style="max-width: 300px;" />
+        <button class="btn btn-danger" (click)="searchDutyById()">Add Schedule</button>
+      </div>
+    </div>
+
+    <h5 *ngIf="AllDuty" style="margin-top: 10px; color: blueviolet;">
+      SHOWING DATA FOR EMPLOYEE ID <strong style="color: black;">{{this.Eid}}</strong>
+    </h5>
+    
+
+    <!-- Table to display filtered duty details -->
+    <table class="table table-bordered mt-4">
+        <thead>
+          <tr>
+            <th scope="col">SL No</th>
+            <th>Date</th>
+            <th scope="col">Schedule No</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Duty Hours</th>
+            <th scope="col">OT Hours</th>
+            <th scope="col">Night Allowance</th>
+            <th scope="col">KMS</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            <!-- <pre>{{ filteredDuties | json }}</pre> -->
+            <ng-container *ngFor="let dutie of this.filteredDuties[0] | keyvalue; let i = index">
+              <tr *ngIf="dutie.value.dutyId">
+                <td>{{ i + 1 }}</td>
+                <td>
+                  <input type="date" [(ngModel)]="dutie.value.date" class="form-control" style="max-width: 150px;" />
+                </td>
+                <th scope="row">{{ dutie.value.dutyId }}</th>
+                <td>{{ dutie.value.startTime }}</td>
+                <td>{{ dutie.value.endTime }}</td>
+                <td>{{ dutie.value.dutyHours }}</td>
+                <td>
+                  <input type="number" [(ngModel)]="dutie.value.OThours" class="form-control" style="max-width: 100px;" />
+                </td>
+                <td>
+                  <input type="number" [(ngModel)]="dutie.value.NightHalt" class="form-control" style="max-width: 100px;" />
+                </td>
+                <td>
+                  <input type="number" [(ngModel)]="dutie.value.kms" class="form-control" style="max-width: 100px;" />
+                </td>
+                <td>
+                  <button class="btn btn-danger" (click)="deleteDutyie(i)">Delete</button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+          
+      </table>
+
+      <div class="d-flex justify-content-center"style="margin-bottom:1rem">
+        <button style="background: #ff7100 !important;
+    border: none !important;" class="btn btn-success" (click)="updateEmployeeData()">UPDATE</button>
+      <button style="margin-left: 8px;"  *ngIf="filteredDuties.length>0" class="btn btn-success ml-2" (click)="exportToExcel()">Download Excel</button>
+      <button style="margin-left: 8px" (click)="TotalAmtOfEmployee()"  *ngIf="filteredDuties.length>0"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+        CALCULATE TOTAL
+      </button>
+  
+      </div>
+
+      
+
+    <!-- Message if no results yet -->
+    <p style="text-align: center;" *ngIf="filteredDuties.length === 0" class="text-danger mt-4">
+     Please Emter employee Id
+    </p>
+
+    <!-- <button style="margin-top: 3rem;margin-bottom: 10px;" *ngIf="filteredDuties.length>0" class="btn btn-primary" (click)="TotalAmtOfEmployee()">CALCULATE TOTAL</button> -->
+    <!-- <h5 *ngIf="successtxt" style="text-align: center;" class="text-success">EMPLOYEE UPDATED SUCCESSFULLY !!</h5> -->
+
+   
+  </div>
+
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header"style="background: #ff7100 !important;
+      color: #fff;
+      font-weight: 800;opacity: 0.8;">
+        <h5 class="modal-title" id="exampleModalLongTitle">Total</h5>
+      
+      </div>
+      <div class="modal-body">
+        <div *ngIf="totalValues">
+          <p><strong>Total Duty Hours:</strong> {{ totalValues.totalDutyHours }}</p>
+          <p><strong>Total OT Hours:</strong> {{ totalValues.totalOThours }}</p>
+          <p><strong>Total Night Allowance:</strong> {{ totalValues.totalNightHalt }}</p>
+          <p><strong>Total KMS:</strong> {{ totalValues.totalKms }}</p>
+      </div>
+      </div>
+      <div class="modal-footer"style="background: #ff7100 !important;
+      color: #fff;
+      font-weight: 800;opacity: 0.8;">
+        <button type="button" style="border: 1px solid #fff;" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+    
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- <button class="btn btn-primary mt-4" (click)="calculateTotal()">Calculate Total</button> -->
+
+  <!-- Display total values -->
+
+</div>
+
+
+
+
+<app-loader [isLoading]="isLoading"></app-loader>
+

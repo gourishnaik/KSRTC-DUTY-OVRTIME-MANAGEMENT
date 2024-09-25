@@ -1,0 +1,17 @@
+.navbar-toggler-icon {
+    background-image: none; 
+    border: 1px solid white; 
+    color: white; 
+  }
+  
+  .navbar-toggler-icon::before {
+    content: "\2630"; 
+    font-size: 24px; 
+    color: white; 
+  }
+  .fa {
+    cursor: pointer;
+  }
+  .fas {
+    cursor: pointer;
+  }
