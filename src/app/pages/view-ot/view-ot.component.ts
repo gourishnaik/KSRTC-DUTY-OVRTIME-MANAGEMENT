@@ -44,6 +44,15 @@ export class ViewOtComponent implements OnInit {
   // Sample duty data
   dutyListData = [
     {
+      dutyId: '0',
+      startTime: '-',
+      endTime: '-',
+      dutyHours: '',
+      OThours: '',
+      NightHalt: '',
+      kms: ''
+    },
+    {
       dutyId: '1',
       startTime: '18:30',
       endTime: '',
@@ -77,6 +86,15 @@ export class ViewOtComponent implements OnInit {
       dutyHours: '10:30',
       OThours: '2:30',
       NightHalt: '15',
+      kms: '503'
+    },
+    {
+      dutyId: '4',
+      startTime: '06:00',
+      endTime: '18:00',
+      dutyHours: '10:30',
+      OThours: '2:30',
+      NightHalt: '',
       kms: '503'
     }
   ];

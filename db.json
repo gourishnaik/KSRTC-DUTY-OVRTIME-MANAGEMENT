@@ -1,6 +1,68 @@
 {
   "Createtask": [
-
+    {
+      "1": {
+        "dutyId": "2",
+        "startTime": "",
+        "endTime": "07:45",
+        "dutyHours": "06:15",
+        "OThours": "",
+        "NightHalt": "125",
+        "kms": "538",
+        "date": "2024-09-26"
+      },
+      "2": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": "",
+        "date": "2024-09-27"
+      },
+      "3": {
+        "dutyId": "4",
+        "startTime": "06:00",
+        "endTime": "18:00",
+        "dutyHours": "10:30",
+        "OThours": "2:30",
+        "NightHalt": "",
+        "kms": "503",
+        "date": "2024-09-28"
+      },
+      "4": {
+        "dutyId": "3",
+        "startTime": "08:45",
+        "endTime": "20:30",
+        "dutyHours": "10:30",
+        "OThours": "2:30",
+        "NightHalt": "15",
+        "kms": "503",
+        "date": "2024-09-28"
+      },
+      "5": {
+        "dutyId": "4",
+        "startTime": "06:00",
+        "endTime": "18:00",
+        "dutyHours": "10:30",
+        "OThours": "2:30",
+        "NightHalt": "",
+        "kms": "503",
+        "date": "2024-09-21"
+      },
+      "6": {
+        "dutyId": "0",
+        "startTime": "-",
+        "endTime": "-",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": "",
+        "date": "2024-10-04"
+      },
+      "id": "1712"
+    }
   ],
   "comments": [],
   "users": []

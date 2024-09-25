@@ -1,0 +1,11 @@
+table{
+    border: 1px solid black;
+}
+td{
+    color: black;
+    font-weight: 700;
+}
+.form-control{
+    font-weight: bold!important;
+    border: 1px solid red!important;
+}
