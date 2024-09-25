@@ -27,6 +27,7 @@ export class ViewOtComponent implements OnInit {
   isLoading: boolean = false;
   successtxt: boolean = false;
   totalValues: any = null;
+  timedropdown = ["00:00" ,"00:15", "00:30", "00:45",  "01:00", "01:15", "01:30",  "01:45", "02:00", "02:15",  "02:30", "02:45", "03:00"]
   filteredDuties: Duty[] = []; 
   AllDuty=false;
   Eid:any;
@@ -69,6 +70,15 @@ export class ViewOtComponent implements OnInit {
       NightHalt: '125',
       kms: '538'
     },
+    {
+      dutyId: '3',
+      startTime: '08:45',
+      endTime: '20:30',
+      dutyHours: '10:30',
+      OThours: '2:30',
+      NightHalt: '15',
+      kms: '503'
+    }
   ];
 
   constructor(private api: ApiCallsService,private route:Router) {}
@@ -319,8 +329,10 @@ export class ViewOtComponent implements OnInit {
         totalMinutes += minutes;
       }
   
-      // Sum OT hours (ensure it is treated as a number)
-      totalOThours += Number(duty.OThours) || 0;
+      if (duty.OThours) {
+        const [otHours, otMinutes] = duty.OThours.split(':').map(Number); // Split the OT hours into hours and minutes
+        totalOThours += (otHours * 60) + otMinutes; // Convert to total minutes and sum
+      }
   
       // Sum night halt
       totalNightHalt += Number(duty.NightHalt) || 0;
@@ -332,10 +344,14 @@ export class ViewOtComponent implements OnInit {
     // Convert totalMinutes to hours if it exceeds 60
     totalHours += Math.floor(totalMinutes / 60);
     totalMinutes = totalMinutes % 60; // remaining minutes after converting to hours
+
+    const otTotalHours = Math.floor(totalOThours / 60);
+    const otTotalMinutes = totalOThours % 60;
   
     // Format total duty hours in HH:mm
     const formattedDutyHours = `${String(totalHours).padStart(2, '0')}:${String(totalMinutes).padStart(2, '0')}`;
-  
+    const formattedOThours = `${String(otTotalHours).padStart(2, '0')}:${String(otTotalMinutes).padStart(2, '0')}`;
+
     // Store the totals
     // this.totalValues = {
     //   totalDutyHours: formattedDutyHours,
@@ -364,12 +380,12 @@ export class ViewOtComponent implements OnInit {
     // Prepare the table data without headings
     const tableData = dutiesArray.map((duty: Duty, index) => [
       index + 1,                 // SL No
-      formatDate(duty.date),      // Date formatted as dd/mm/yyyy
+      // formatDate(duty.date),      // Date formatted as dd/mm/yyyy
       duty.dutyId,               // Schedule No
       duty.startTime,            // Start Time
       duty.endTime,              // End Time
       duty.dutyHours,            // Duty Hours
-      duty.OThours,              // OT Hours
+      duty.OThours||'00:00',              // OT Hours
       duty.NightHalt,            // Night Allowance
       duty.kms                   // KMS
     ]);
@@ -418,8 +434,11 @@ TotalAmtOfEmployee() {
       totalMinutes += minutes;
     }
 
-    // Sum OT hours (ensure it is treated as a number)
-    totalOThours += Number(duty.OThours) || 0;
+    // Handle OT hours (convert HH:mm format to minutes and sum)
+    if (duty.OThours) {
+      const [otHours, otMinutes] = duty.OThours.split(':').map(Number); // Split the OT hours into hours and minutes
+      totalOThours += (otHours * 60) + otMinutes; // Convert to total minutes and sum
+    }
 
     // Sum night halt
     totalNightHalt += Number(duty.NightHalt) || 0;
@@ -428,22 +447,23 @@ TotalAmtOfEmployee() {
     totalKms += Number(duty.kms) || 0;
   }
 
-  // Convert totalMinutes to hours if it exceeds 60
+  // Convert total minutes to hours if it exceeds 60
   totalHours += Math.floor(totalMinutes / 60);
   totalMinutes = totalMinutes % 60; // remaining minutes after converting to hours
 
+  // Convert totalOThours from minutes to hours and minutes
+  const otTotalHours = Math.floor(totalOThours / 60);
+  const otTotalMinutes = totalOThours % 60;
+
   // Format total duty hours in HH:mm
   const formattedDutyHours = `${String(totalHours).padStart(2, '0')}:${String(totalMinutes).padStart(2, '0')}`;
-
+  const formattedOThours = `${String(otTotalHours).padStart(2, '0')}:${String(otTotalMinutes).padStart(2, '0')}`;
 
   this.totalValues = {
     totalDutyHours: formattedDutyHours,
-    totalOThours,
+    totalOThours: formattedOThours,
     totalNightHalt, 
     totalKms,
   };
 }
-
-  
-  
 }

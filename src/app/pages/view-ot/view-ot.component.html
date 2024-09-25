@@ -60,7 +60,19 @@ font-weight: 700!important;
                 <td>{{ dutie.value.endTime }}</td>
                 <td>{{ dutie.value.dutyHours }}</td>
                 <td>
-                  <input type="number" [(ngModel)]="dutie.value.OThours" class="form-control" style="max-width: 100px;" />
+                  <!-- <input type="text" [(ngModel)]="dutie.value.OThours" class="form-control" style="max-width: 100px;" /> -->
+                  <!-- <select id="timeSelect" [(ngModel)]="dutie.value.OThours" class="form-control" style="max-width: 120px;">
+                    <option *ngFor="let time of timedropdown" [value]="time">{{ time }}</option>
+                  </select> -->
+                
+                  <span *ngIf="dutie.value.OThours">{{ dutie.value.OThours }}</span>
+                  <select id="timeSelect" [(ngModel)]="dutie.value.OThours" class="form-control" style="max-width: 120px;">
+                    <option *ngFor="let time of timedropdown" [value]="time">{{ time }}</option>
+                  </select>
+                
+                  
+                 
+                  
                 </td>
                 <td>
                   <input type="number" [(ngModel)]="dutie.value.NightHalt" class="form-control" style="max-width: 100px;" />
