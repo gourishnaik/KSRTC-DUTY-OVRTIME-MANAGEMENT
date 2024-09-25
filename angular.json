@@ -87,9 +87,17 @@
             "scripts": []
           }
         },
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+       "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "repo": "https://github.com/gourishnaik/KSRTC-DUTY-OVRTIME-MANAGEMENT.git",
+            "branch": "gh-pages",
+            "name": "gourishnaik",
+            "email": "gourishnaik050@gmail.com",
+            "baseHref": "/KSRTC-DUTY-OVRTIME-MANAGEMENT/"
+          }
         }
+        
       }
     }
   },
