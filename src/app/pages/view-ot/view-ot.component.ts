@@ -492,7 +492,7 @@ export class ViewOtComponent implements OnInit {
             
             } else {
               this.filteredDuties = [tasks]; 
-              this.calculateTotal()
+              // this.calculateTotal()
               this.totalValues = false;
               this.isLoading = false;
               // this.Eid ='';
@@ -705,7 +705,7 @@ export class ViewOtComponent implements OnInit {
       const day = String(date.getDate()).padStart(2, '0');
       const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
       const year = date.getFullYear();
-      return `${day}/${month}`;
+      return `${day}/${month}/${year}`;
     };
   
     // Helper function to parse formatted date string back to a Date object

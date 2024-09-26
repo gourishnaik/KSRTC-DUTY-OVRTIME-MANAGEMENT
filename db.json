@@ -1,34 +1,7 @@
 {
   "Createtask": [
     {
-      "6": {
-        "dutyId": "15",
-        "startTime": "16:00",
-        "endTime": "",
-        "dutyHours": "",
-        "OThours": "",
-        "NightHalt": "",
-        "kms": ""
-      },
-      "7": {
-        "dutyId": "NS/13",
-        "startTime": "21:00",
-        "endTime": "07:05",
-        "dutyHours": "08:00",
-        "OThours": "1:35",
-        "NightHalt": "90",
-        "kms": "718"
-      },
-      "8": {
-        "dutyId": "14",
-        "startTime": "",
-        "endTime": "12:45",
-        "dutyHours": "08:00",
-        "OThours": "1:30",
-        "NightHalt": "15",
-        "kms": "718"
-      },
-      "9": {
+      "1": {
         "dutyId": "1",
         "startTime": "18:30",
         "endTime": "",
@@ -36,9 +9,9 @@
         "OThours": "",
         "NightHalt": "",
         "kms": "",
-        "date": "2024-09-20"
+        "date": "2024-09-05"
       },
-      "10": {
+      "2": {
         "dutyId": "2",
         "startTime": "",
         "endTime": "07:45",
@@ -46,19 +19,19 @@
         "OThours": "",
         "NightHalt": "125",
         "kms": "538",
-        "date": "2024-09-20"
+        "date": "2024-09-11"
       },
-      "11": {
-        "dutyId": "1",
-        "startTime": "18:30",
-        "endTime": "",
-        "dutyHours": "",
-        "OThours": "",
-        "NightHalt": "",
-        "kms": "",
-        "date": "2024-09-13"
+      "3": {
+        "dutyId": "3",
+        "startTime": "08:45",
+        "endTime": "20:30",
+        "dutyHours": "10:30",
+        "OThours": "2:30",
+        "NightHalt": "15",
+        "kms": "503",
+        "date": "2024-09-11"
       },
-      "12": {
+      "4": {
         "dutyId": "4",
         "startTime": "06:00",
         "endTime": "18:00",
@@ -66,7 +39,204 @@
         "OThours": "2:30",
         "NightHalt": "",
         "kms": "503",
+        "date": "2024-09-05"
+      },
+      "5": {
+        "dutyId": "9",
+        "startTime": "07:30",
+        "endTime": "19:30",
+        "dutyHours": "09:30",
+        "OThours": "1:30",
+        "NightHalt": "15",
+        "kms": "302",
+        "date": "2024-09-14"
+      },
+      "6": {
+        "dutyId": "10",
+        "startTime": "07:00",
+        "endTime": "18:50",
+        "dutyHours": "09:30",
+        "OThours": "1:30",
+        "NightHalt": "",
+        "kms": "279",
+        "date": "2024-09-06"
+      },
+      "7": {
+        "dutyId": "11",
+        "startTime": "06:15",
+        "endTime": "16:45",
+        "dutyHours": "10:00",
+        "OThours": "2:00",
+        "NightHalt": "",
+        "kms": "386",
         "date": "2024-09-27"
+      },
+      "8": {
+        "dutyId": "13",
+        "startTime": "15:15",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": "",
+        "date": "2024-09-27"
+      },
+      "9": {
+        "dutyId": "NS/13",
+        "startTime": "21:00",
+        "endTime": "07:05",
+        "dutyHours": "08:00",
+        "OThours": "1:35",
+        "NightHalt": "90",
+        "kms": "718",
+        "date": "2024-09-27"
+      },
+      "10": {
+        "dutyId": "14",
+        "startTime": "",
+        "endTime": "12:45",
+        "dutyHours": "08:00",
+        "OThours": "1:30",
+        "NightHalt": "15",
+        "kms": "718",
+        "date": "2024-09-04"
+      },
+      "11": {
+        "dutyId": "15",
+        "startTime": "16:00",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": "",
+        "date": "2024-09-05"
+      },
+      "15": {
+        "dutyId": "20",
+        "startTime": "08:00",
+        "endTime": "19:30",
+        "dutyHours": "10:00",
+        "OThours": "2:00",
+        "NightHalt": "15",
+        "kms": "481",
+        "date": "2024-09-06"
+      },
+      "19": {
+        "dutyId": "26",
+        "startTime": "06:45",
+        "endTime": "17:25",
+        "dutyHours": "08:30",
+        "OThours": "0:30",
+        "NightHalt": "15",
+        "kms": "382",
+        "date": "2024-09-23"
+      },
+      "20": {
+        "dutyId": "27",
+        "startTime": "06:30",
+        "endTime": "16:20",
+        "dutyHours": "08:30",
+        "OThours": "0:30",
+        "NightHalt": "",
+        "kms": "382",
+        "date": "2024-09-27"
+      },
+      "21": {
+        "dutyId": "2",
+        "startTime": "",
+        "endTime": "07:45",
+        "dutyHours": "06:15",
+        "OThours": "",
+        "NightHalt": "125",
+        "kms": "538"
+      },
+      "22": {
+        "dutyId": "30",
+        "startTime": "06:45",
+        "endTime": "19:45",
+        "dutyHours": "10:30",
+        "OThours": "2:30",
+        "NightHalt": "",
+        "kms": "538",
+        "date": "2024-09-03"
+      },
+      "23": {
+        "dutyId": "40",
+        "startTime": "07:45",
+        "endTime": "19:15",
+        "dutyHours": "09:45",
+        "OThours": "1:45",
+        "NightHalt": "65",
+        "kms": "410",
+        "date": "2024-09-12"
+      },
+      "24": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "25": {
+        "dutyId": "9",
+        "startTime": "07:30",
+        "endTime": "19:30",
+        "dutyHours": "09:30",
+        "OThours": "1:30",
+        "NightHalt": "15",
+        "kms": "302"
+      },
+      "26": {
+        "dutyId": "51",
+        "startTime": "07:30",
+        "endTime": "19:05",
+        "dutyHours": "09:20",
+        "OThours": "1:20",
+        "NightHalt": "",
+        "kms": "302",
+        "date": "2024-09-13"
+      },
+      "27": {
+        "dutyId": "51",
+        "startTime": "07:30",
+        "endTime": "19:05",
+        "dutyHours": "09:20",
+        "OThours": "1:20",
+        "NightHalt": "",
+        "kms": "302",
+        "date": "2024-09-13"
+      },
+      "28": {
+        "dutyId": "40",
+        "startTime": "07:45",
+        "endTime": "19:15",
+        "dutyHours": "09:45",
+        "OThours": "1:45",
+        "NightHalt": "65",
+        "kms": "410",
+        "date": "2024-07-17"
+      },
+      "30": {
+        "dutyId": "51",
+        "startTime": "07:30",
+        "endTime": "19:05",
+        "dutyHours": "09:20",
+        "OThours": "1:20",
+        "NightHalt": "",
+        "kms": "302",
+        "date": "2024-09-13"
+      },
+      "31": {
+        "dutyId": "51",
+        "startTime": "07:30",
+        "endTime": "19:05",
+        "dutyHours": "09:20",
+        "OThours": "1:20",
+        "NightHalt": "",
+        "kms": "302",
+        "date": "2024-09-13"
       },
       "id": "1712"
     },
