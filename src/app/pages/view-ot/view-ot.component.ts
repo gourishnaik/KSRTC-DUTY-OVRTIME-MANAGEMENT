@@ -163,7 +163,8 @@ export class ViewOtComponent implements OnInit {
   
   
   
-
+ 
+  
 
   
   
@@ -384,30 +385,42 @@ export class ViewOtComponent implements OnInit {
       return;
     }
   
+    // Log the filtered duties before processing
+    console.log("Filtered Duties: ", this.filteredDuties);
+  
     const dutiesArray = Object.values(this.filteredDuties[0]);
-
+  
     // Helper function to format date to dd/mm/yyyy
-    const formatDate = (dateString:any) => {
+    const formatDate = (dateString: any) => {
       const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        return 'Invalid Date';
+      }
       const day = String(date.getDate()).padStart(2, '0');
       const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
       const year = date.getFullYear();
       return `${day}/${month}/${year}`;
     };
   
+    // Helper function to parse formatted date string back to a Date object
+    const parseFormattedDate = (dateString: string) => {
+      const [day, month, year] = dateString.split('/').map(Number);
+      return new Date(year, month - 1, day); // Month is 0-indexed in JavaScript Date
+    };
+  
     // Prepare the table data without headings
-    const tableData = dutiesArray.map((duty: Duty, index) => [
-      index + 1,                 // SL No
-      // formatDate(duty.date),      // Date formatted as dd/mm/yyyy
-      duty.dutyId,               // Schedule No
-      duty.startTime,            // Start Time
-      duty.endTime,              // End Time
-      duty.dutyHours,            // Duty Hours
-      duty.OThours||'00:00',              // OT Hours
-      duty.NightHalt,            // Night Allowance
-      duty.kms                   // KMS
+    let tableData = dutiesArray.map((duty: Duty, index) => [
+      index + 1,                  // SL No
+      formatDate(duty.date),      // Date formatted as dd/mm/yyyy
+      duty.dutyId,                // Schedule No
+      duty.startTime,             // Start Time
+      duty.endTime,               // End Time
+      duty.dutyHours,             // Duty Hours
+      duty.OThours || '00:00',    // OT Hours
+      duty.NightHalt || 0,        // Night Allowance (default to 0 if undefined)
+      duty.kms || 0               // KMS (default to 0 if undefined)
     ]);
-
+  
     // Remove the last entry from the tableData array
     tableData.pop();
   
@@ -417,7 +430,20 @@ export class ViewOtComponent implements OnInit {
       return;
     }
   
-    // Create the worksheet from the array of arrays without headers
+    // Log tableData before sorting
+    console.log("Table Data before sorting: ", tableData);
+  
+    // Sort tableData based on the parsed date (second element of each row)
+    tableData = tableData.sort((a, b) => {
+      const dateA = parseFormattedDate(a[1] as string); // Cast to string
+      const dateB = parseFormattedDate(b[1] as string); // Cast to string
+      return dateA.getTime() - dateB.getTime(); // Sort in ascending order
+    });
+  
+    // Log tableData after sorting
+    console.log("Table Data after sorting: ", tableData);
+  
+    // Create the worksheet from the sorted array of arrays without headers
     const worksheet = XLSX.utils.aoa_to_sheet(tableData);
   
     const workbook = {
@@ -430,8 +456,9 @@ export class ViewOtComponent implements OnInit {
     // Export file using employeeIdSearch for file name
     XLSX.writeFile(workbook, `${this.Eid}.xlsx`);
     this.updateEmployeeData();
- 
-}
+
+  }
+  
 
 
 TotalAmtOfEmployee() {
@@ -483,5 +510,7 @@ TotalAmtOfEmployee() {
     totalNightHalt, 
     totalKms,
   };
+
 }
+
 }
