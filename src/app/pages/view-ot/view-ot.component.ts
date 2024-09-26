@@ -96,7 +96,95 @@ export class ViewOtComponent implements OnInit {
       OThours: '2:30',
       NightHalt: '',
       kms: '503'
-    }
+    },
+    {
+      dutyId: '9',
+      startTime: '07:30',
+      endTime: '19:30',
+      dutyHours: '09:30',
+      OThours: '1:30',
+      NightHalt: '15',
+      kms: '302'
+    },
+    {
+      dutyId: '10',
+      startTime: '07:00',
+      endTime: '18:50',
+      dutyHours: '09:30',
+      OThours: '1:30',
+      NightHalt: '',
+      kms: '279'
+    },
+    {
+      dutyId: '11',
+      startTime: '06:15',
+      endTime: '16:45',
+      dutyHours: '10:00',
+      OThours: '2:00',
+      NightHalt: '',
+      kms: '386'
+    },
+    {
+      dutyId: '13',
+      startTime: '15:15',
+      endTime: '',
+      dutyHours: '',
+      OThours: '',
+      NightHalt: '',
+      kms: ''
+    },
+    {
+      dutyId: 'NS/13',
+      startTime: '21:00',
+      endTime: '07:05',
+      dutyHours: '08:00',
+      OThours: '1:35',
+      NightHalt: '90',
+      kms: '718'
+    },
+    {
+      dutyId: '14',
+      startTime: '',
+      endTime: '12:45',
+      dutyHours: '08:00',
+      OThours: '1:30',
+      NightHalt: '15',
+      kms: '718'
+    },
+    {
+      dutyId: '15',
+      startTime: '16:00',
+      endTime: '',
+      dutyHours: '',
+      OThours: '',
+      NightHalt: '',
+      kms: ''
+    },   {
+      dutyId: 'NS/15',
+      startTime: '15:15',
+      endTime: '02:30',
+      dutyHours: '06:30',
+      OThours: '1:00',
+      NightHalt: '125',
+      kms: '556'
+    },   {
+      dutyId: '16',
+      startTime: '',
+      endTime: '04:15',
+      dutyHours: '06:30',
+      OThours: '',
+      NightHalt: '125',
+      kms: '556'
+    },
+    {
+      dutyId: '19',
+      startTime: '06:00',
+      endTime: '17:30',
+      dutyHours: '10:00',
+      OThours: '2:00',
+      NightHalt: '15',
+      kms: '481'
+    },
   ];
 
   constructor(private api: ApiCallsService,private route:Router) {}
@@ -399,7 +487,7 @@ export class ViewOtComponent implements OnInit {
       const day = String(date.getDate()).padStart(2, '0');
       const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
       const year = date.getFullYear();
-      return `${day}/${month}/${year}`;
+      return `${day}/${month}`;
     };
   
     // Helper function to parse formatted date string back to a Date object
@@ -415,9 +503,9 @@ export class ViewOtComponent implements OnInit {
       duty.startTime,             // Start Time
       duty.endTime,               // End Time
       duty.dutyHours,             // Duty Hours
-      duty.OThours || '00:00',    // OT Hours
-      duty.NightHalt || 0,        // Night Allowance (default to 0 if undefined)
-      duty.kms || 0               // KMS (default to 0 if undefined)
+      duty.OThours ,    // OT Hours
+      duty.NightHalt ,        // Night Allowance (default to 0 if undefined)
+      duty.kms               // KMS (default to 0 if undefined)
     ]);
   
     // Remove the last entry from the tableData array
@@ -441,7 +529,7 @@ export class ViewOtComponent implements OnInit {
   
     // Create the indexed table data with indexing based on date
     const indexedTableData = tableData.map((row, index) => [
-      index + 1,                    // SL No based on the order after sorting
+      // index + 1,                    // SL No based on the order after sorting
       ...row                        // Spread the rest of the row
     ]);
   
