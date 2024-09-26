@@ -409,8 +409,7 @@ export class ViewOtComponent implements OnInit {
     };
   
     // Prepare the table data without headings
-    let tableData = dutiesArray.map((duty: Duty, index) => [
-      index + 1,                  // SL No
+    let tableData = dutiesArray.map((duty: Duty) => [
       formatDate(duty.date),      // Date formatted as dd/mm/yyyy
       duty.dutyId,                // Schedule No
       duty.startTime,             // Start Time
@@ -433,18 +432,24 @@ export class ViewOtComponent implements OnInit {
     // Log tableData before sorting
     console.log("Table Data before sorting: ", tableData);
   
-    // Sort tableData based on the parsed date (second element of each row)
-    tableData = tableData.sort((a, b) => {
-      const dateA = parseFormattedDate(a[1] as string); // Cast to string
-      const dateB = parseFormattedDate(b[1] as string); // Cast to string
+    // Sort tableData based on the parsed date (first element of each row)
+    tableData.sort((a, b) => {
+      const dateA = parseFormattedDate(a[0] as string); // Cast to string
+      const dateB = parseFormattedDate(b[0] as string); // Cast to string
       return dateA.getTime() - dateB.getTime(); // Sort in ascending order
     });
   
-    // Log tableData after sorting
-    console.log("Table Data after sorting: ", tableData);
+    // Create the indexed table data with indexing based on date
+    const indexedTableData = tableData.map((row, index) => [
+      index + 1,                    // SL No based on the order after sorting
+      ...row                        // Spread the rest of the row
+    ]);
   
-    // Create the worksheet from the sorted array of arrays without headers
-    const worksheet = XLSX.utils.aoa_to_sheet(tableData);
+    // Log indexedTableData
+    console.log("Indexed Table Data: ", indexedTableData);
+  
+    // Create the worksheet from the indexed array of arrays without headers
+    const worksheet = XLSX.utils.aoa_to_sheet(indexedTableData);
   
     const workbook = {
       Sheets: {
@@ -456,8 +461,8 @@ export class ViewOtComponent implements OnInit {
     // Export file using employeeIdSearch for file name
     XLSX.writeFile(workbook, `${this.Eid}.xlsx`);
     this.updateEmployeeData();
+}
 
-  }
   
 
 
