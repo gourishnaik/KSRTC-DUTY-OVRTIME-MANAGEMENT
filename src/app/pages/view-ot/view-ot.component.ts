@@ -185,6 +185,224 @@ export class ViewOtComponent implements OnInit {
       NightHalt: '15',
       kms: '481'
     },
+    {
+      dutyId: '20',
+      startTime: '08:00',
+      endTime: '19:30',
+      dutyHours: '10:00',
+      OThours: '2:00',
+      NightHalt: '15',
+      kms: '481'
+    },
+    {
+      dutyId: '21',
+      startTime: '07:10',
+      endTime: '18:40',
+      dutyHours: '10:00',
+      OThours: '2:00',
+      NightHalt: '15',
+      kms: '481'
+    },
+    {
+      dutyId: '22',
+      startTime: '08:00',
+      endTime: '19:30',
+      dutyHours: '10:00',
+      OThours: '2:00',
+      NightHalt: '',
+      kms: '481'
+    },
+    {
+      dutyId: '24',
+      startTime: '06:00',
+      endTime: '17:45',
+      dutyHours: '10:00',
+      OThours: '2:00',
+      NightHalt: '',
+      kms: '386'
+    },
+    {
+      dutyId: '26',
+      startTime: '06:45',
+      endTime: '17:25',
+      dutyHours: '08:30',
+      OThours: '0:30',
+      NightHalt: '15',
+      kms: '382'
+    },
+    {
+      dutyId: '27',
+      startTime: '06:30',
+      endTime: '16:20',
+      dutyHours: '08:30',
+      OThours: '0:30',
+      NightHalt: '',
+      kms: '382'
+    },
+    {
+      dutyId: '29',
+      startTime: '07:30',
+      endTime: '20:15',
+      dutyHours: '10:30',
+      OThours: '2:30',
+      NightHalt: '15',
+      kms: '538'
+    },
+    {
+      dutyId: '30',
+      startTime: '06:45',
+      endTime: '19:45',
+      dutyHours: '10:30',
+      OThours: '2:30',
+      NightHalt: '',
+      kms: '538'
+    },
+    {
+      dutyId: '34',
+      startTime: '07:30',
+      endTime: '18:00',
+      dutyHours: '09:30',
+      OThours: '1:30',
+      NightHalt: '15',
+      kms: '439'
+    },
+    {
+      dutyId: '35',
+      startTime: '07:30',
+      endTime: '19:15',
+      dutyHours: '09:30',
+      OThours: '1:30',
+      NightHalt: '',
+      kms: '439'
+    },
+    {
+      dutyId: '36',
+      startTime: '06:45',
+      endTime: '17:30',
+      dutyHours: '09:30',
+      OThours: '1:30',
+      NightHalt: '15',
+      kms: '420'
+    },
+    {
+      dutyId: '37',
+      startTime: '06:45',
+      endTime: '16:30',
+      dutyHours: '08:30',
+      OThours: '0:30',
+      NightHalt: '',
+      kms: '378'
+    },
+    {
+      dutyId: '39',
+      startTime: '05:30',
+      endTime: '18:30',
+      dutyHours: '10:00',
+      OThours: '2:00',
+      NightHalt: '',
+      kms: '480'
+    },
+    {
+      dutyId: '40',
+      startTime: '07:45',
+      endTime: '19:15',
+      dutyHours: '09:45',
+      OThours: '1:45',
+      NightHalt: '65',
+      kms: '410'
+    },
+    {
+      dutyId: '41',
+      startTime: '07:15',
+      endTime: '19:15',
+      dutyHours: '09:45',
+      OThours: '1:45',
+      NightHalt: '',
+      kms: '410'
+    },
+    {
+      dutyId: '42',
+      startTime: '07:00',
+      endTime: '19:00',
+      dutyHours: '08:45',
+      OThours: '0:45',
+      NightHalt: '15',
+      kms: '240'
+    },
+    {
+      dutyId: '62',
+      startTime: '06:00',
+      endTime: '19:50',
+      dutyHours: '09:45',
+      OThours: '1:45',
+      NightHalt: '',
+      kms: '278'
+    },
+    {
+      dutyId: '43',
+      startTime: '06:50',
+      endTime: '18:45',
+      dutyHours: '09:45',
+      OThours: '1:45',
+      NightHalt: '',
+      kms: '364'
+    },
+    {
+      dutyId: '45',
+      startTime: '07:00',
+      endTime: '16:30',
+      dutyHours: '09:30',
+      OThours: '1:30',
+      NightHalt: '15',
+      kms: '426'
+    },
+    {
+      dutyId: '46',
+      startTime: '08:15',
+      endTime: '18:00',
+      dutyHours: '09:30',
+      OThours: '1:30',
+      NightHalt: '',
+      kms: '426'
+    },
+    {
+      dutyId: '49',
+      startTime: '06:00',
+      endTime: '17:30',
+      dutyHours: '09:45',
+      OThours: '1:45',
+      NightHalt: '',
+      kms: '360'
+    },
+    {
+      dutyId: '51',
+      startTime: '07:30',
+      endTime: '19:05',
+      dutyHours: '09:20',
+      OThours: '1:20',
+      NightHalt: '',
+      kms: '302'
+    },
+    {
+      dutyId: '52',
+      startTime: '08:15',
+      endTime: '17:35',
+      dutyHours: '09:45',
+      OThours: '1:45',
+      NightHalt: '15',
+      kms: '431'
+    },
+    {
+      dutyId: '53',
+      startTime: '07:45',
+      endTime: '16:00',
+      dutyHours: '09:35',
+      OThours: '1:45',
+      NightHalt: '',
+      kms: '431'
+    },
+    
+
   ];
 
   constructor(private api: ApiCallsService,private route:Router) {}
