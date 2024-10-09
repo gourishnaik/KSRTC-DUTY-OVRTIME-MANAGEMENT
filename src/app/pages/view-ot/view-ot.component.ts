@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiCallsService } from '../api-calls.service';
-import { Router } from '@angular/router';
-import * as XLSX from 'xlsx';
+import { Component, OnInit } from "@angular/core";
+import { ApiCallsService } from "../api-calls.service";
+import { Router } from "@angular/router";
+import * as XLSX from "xlsx";
 interface Duty {
   dutyId: string;
   startTime: string;
@@ -11,470 +11,159 @@ interface Duty {
   NightHalt: string;
   kms: string;
   date: string;
-  [key: string]: any; 
+  [key: string]: any;
 }
 
-
-
 @Component({
-  selector: 'app-view-ot',
-  templateUrl: './view-ot.component.html',
-  styleUrls: ['./view-ot.component.css']
+  selector: "app-view-ot",
+  templateUrl: "./view-ot.component.html",
+  styleUrls: ["./view-ot.component.css"],
 })
 export class ViewOtComponent implements OnInit {
-  employeeIdSearch: any = '';
-  dutyIdSearch: string = '';
+  employeeIdSearch: any = "";
+  dutyIdSearch: string = "";
   isLoading: boolean = false;
   successtxt: boolean = false;
   totalValues: any = null;
-  timedropdown = ["00:00" ,"00:15", "00:30", "00:45",  "01:00", "01:15", "01:30",  "01:45", "02:00", "02:15",  "02:30", "02:45", "03:00"]
-  filteredDuties: Duty[] = []; 
-  AllDuty=false;
-  Eid:any;
+  timedropdown = [
+    "00:00",
+    "00:15",
+    "00:30",
+    "00:45",
+    "01:00",
+    "01:15",
+    "01:30",
+    "01:45",
+    "02:00",
+    "02:15",
+    "02:30",
+    "02:45",
+    "03:00",
+  ];
+  filteredDuties: Duty[] = [];
+  AllDuty = false;
+  Eid: any;
   newDuty: Duty = {
-    dutyId: '',
-    startTime: '',
-    endTime: '',
-    dutyHours: '',
-    OThours: '',
-    NightHalt: '',
-    date: '',
-    kms: '',
+    dutyId: "",
+    startTime: "",
+    endTime: "",
+    dutyHours: "",
+    OThours: "",
+    NightHalt: "",
+    date: "",
+    kms: "",
   };
   // Sample duty data
   dutyListData = [
-    {
-      dutyId: '0',
-      startTime: '-',
-      endTime: '-',
-      dutyHours: '',
-      OThours: '',
-      NightHalt: '',
-      kms: ''
-    },
-    {
-      dutyId: '1',
-      startTime: '18:30',
-      endTime: '',
-      dutyHours: '',
-      OThours: '',
-      NightHalt: '',
-      kms: ''
-    },
-    {
-      dutyId: 'NS/1',
-      startTime: '18:30',
-      endTime: '07:45',
-      dutyHours: '06:15',
-      OThours: '',
-      NightHalt: '125',
-      kms: '538'
-    },
-    {
-      dutyId: '2',
-      startTime: '',
-      endTime: '07:45',
-      dutyHours: '06:15',
-      OThours: '',
-      NightHalt: '125',
-      kms: '538'
-    },
-    {
-      dutyId: '3',
-      startTime: '08:45',
-      endTime: '20:30',
-      dutyHours: '10:30',
-      OThours: '2:30',
-      NightHalt: '15',
-      kms: '503'
-    },
-    {
-      dutyId: '4',
-      startTime: '06:00',
-      endTime: '18:00',
-      dutyHours: '10:30',
-      OThours: '2:30',
-      NightHalt: '',
-      kms: '503'
-    },
-    {
-      dutyId: '9',
-      startTime: '07:30',
-      endTime: '19:30',
-      dutyHours: '09:30',
-      OThours: '1:30',
-      NightHalt: '15',
-      kms: '302'
-    },
-    {
-      dutyId: '10',
-      startTime: '07:00',
-      endTime: '18:50',
-      dutyHours: '09:30',
-      OThours: '1:30',
-      NightHalt: '',
-      kms: '279'
-    },
-    {
-      dutyId: '11',
-      startTime: '06:15',
-      endTime: '16:45',
-      dutyHours: '10:00',
-      OThours: '2:00',
-      NightHalt: '',
-      kms: '386'
-    },
-    {
-      dutyId: '13',
-      startTime: '15:15',
-      endTime: '',
-      dutyHours: '',
-      OThours: '',
-      NightHalt: '',
-      kms: ''
-    },
-    {
-      dutyId: 'NS/13',
-      startTime: '21:00',
-      endTime: '07:05',
-      dutyHours: '08:00',
-      OThours: '1:35',
-      NightHalt: '90',
-      kms: '718'
-    },
-    {
-      dutyId: '14',
-      startTime: '',
-      endTime: '12:45',
-      dutyHours: '08:00',
-      OThours: '1:30',
-      NightHalt: '15',
-      kms: '718'
-    },
-    {
-      dutyId: '15',
-      startTime: '16:00',
-      endTime: '',
-      dutyHours: '',
-      OThours: '',
-      NightHalt: '',
-      kms: ''
-    },   {
-      dutyId: 'NS/15',
-      startTime: '15:15',
-      endTime: '02:30',
-      dutyHours: '06:30',
-      OThours: '1:00',
-      NightHalt: '125',
-      kms: '556'
-    },   {
-      dutyId: '16',
-      startTime: '',
-      endTime: '04:15',
-      dutyHours: '06:30',
-      OThours: '',
-      NightHalt: '125',
-      kms: '556'
-    },
-    {
-      dutyId: '19',
-      startTime: '06:00',
-      endTime: '17:30',
-      dutyHours: '10:00',
-      OThours: '2:00',
-      NightHalt: '15',
-      kms: '481'
-    },
-    {
-      dutyId: '20',
-      startTime: '08:00',
-      endTime: '19:30',
-      dutyHours: '10:00',
-      OThours: '2:00',
-      NightHalt: '15',
-      kms: '481'
-    },
-    {
-      dutyId: '21',
-      startTime: '07:10',
-      endTime: '18:40',
-      dutyHours: '10:00',
-      OThours: '2:00',
-      NightHalt: '15',
-      kms: '481'
-    },
-    {
-      dutyId: '22',
-      startTime: '08:00',
-      endTime: '19:30',
-      dutyHours: '10:00',
-      OThours: '2:00',
-      NightHalt: '',
-      kms: '481'
-    },
-    {
-      dutyId: '24',
-      startTime: '06:00',
-      endTime: '17:45',
-      dutyHours: '10:00',
-      OThours: '2:00',
-      NightHalt: '',
-      kms: '386'
-    },
-    {
-      dutyId: '26',
-      startTime: '06:45',
-      endTime: '17:25',
-      dutyHours: '08:30',
-      OThours: '0:30',
-      NightHalt: '15',
-      kms: '382'
-    },
-    {
-      dutyId: '27',
-      startTime: '06:30',
-      endTime: '16:20',
-      dutyHours: '08:30',
-      OThours: '0:30',
-      NightHalt: '',
-      kms: '382'
-    },
-    {
-      dutyId: '29',
-      startTime: '07:30',
-      endTime: '20:15',
-      dutyHours: '10:30',
-      OThours: '2:30',
-      NightHalt: '15',
-      kms: '538'
-    },
-    {
-      dutyId: '30',
-      startTime: '06:45',
-      endTime: '19:45',
-      dutyHours: '10:30',
-      OThours: '2:30',
-      NightHalt: '',
-      kms: '538'
-    },
-    {
-      dutyId: '34',
-      startTime: '07:30',
-      endTime: '18:00',
-      dutyHours: '09:30',
-      OThours: '1:30',
-      NightHalt: '15',
-      kms: '439'
-    },
-    {
-      dutyId: '35',
-      startTime: '07:30',
-      endTime: '19:15',
-      dutyHours: '09:30',
-      OThours: '1:30',
-      NightHalt: '',
-      kms: '439'
-    },
-    {
-      dutyId: '36',
-      startTime: '06:45',
-      endTime: '17:30',
-      dutyHours: '09:30',
-      OThours: '1:30',
-      NightHalt: '15',
-      kms: '420'
-    },
-    {
-      dutyId: '37',
-      startTime: '06:45',
-      endTime: '16:30',
-      dutyHours: '08:30',
-      OThours: '0:30',
-      NightHalt: '',
-      kms: '378'
-    },
-    {
-      dutyId: '39',
-      startTime: '05:30',
-      endTime: '18:30',
-      dutyHours: '10:00',
-      OThours: '2:00',
-      NightHalt: '',
-      kms: '480'
-    },
-    {
-      dutyId: '40',
-      startTime: '07:45',
-      endTime: '19:15',
-      dutyHours: '09:45',
-      OThours: '1:45',
-      NightHalt: '65',
-      kms: '410'
-    },
-    {
-      dutyId: '41',
-      startTime: '07:15',
-      endTime: '19:15',
-      dutyHours: '09:45',
-      OThours: '1:45',
-      NightHalt: '',
-      kms: '410'
-    },
-    {
-      dutyId: '42',
-      startTime: '07:00',
-      endTime: '19:00',
-      dutyHours: '08:45',
-      OThours: '0:45',
-      NightHalt: '15',
-      kms: '240'
-    },
-    {
-      dutyId: '62',
-      startTime: '06:00',
-      endTime: '19:50',
-      dutyHours: '09:45',
-      OThours: '1:45',
-      NightHalt: '',
-      kms: '278'
-    },
-    {
-      dutyId: '43',
-      startTime: '06:50',
-      endTime: '18:45',
-      dutyHours: '09:45',
-      OThours: '1:45',
-      NightHalt: '',
-      kms: '364'
-    },
-    {
-      dutyId: '45',
-      startTime: '07:00',
-      endTime: '16:30',
-      dutyHours: '09:30',
-      OThours: '1:30',
-      NightHalt: '15',
-      kms: '426'
-    },
-    {
-      dutyId: '46',
-      startTime: '08:15',
-      endTime: '18:00',
-      dutyHours: '09:30',
-      OThours: '1:30',
-      NightHalt: '',
-      kms: '426'
-    },
-    {
-      dutyId: '49',
-      startTime: '06:00',
-      endTime: '17:30',
-      dutyHours: '09:45',
-      OThours: '1:45',
-      NightHalt: '',
-      kms: '360'
-    },
-    {
-      dutyId: '51',
-      startTime: '07:30',
-      endTime: '19:05',
-      dutyHours: '09:20',
-      OThours: '1:20',
-      NightHalt: '',
-      kms: '302'
-    },
-    {
-      dutyId: '52',
-      startTime: '08:15',
-      endTime: '17:35',
-      dutyHours: '09:45',
-      OThours: '1:45',
-      NightHalt: '15',
-      kms: '431'
-    },
-    {
-      dutyId: '53',
-      startTime: '07:45',
-      endTime: '16:00',
-      dutyHours: '09:35',
-      OThours: '1:45',
-      NightHalt: '',
-      kms: '431'
-    },
-    
-
+    { dutyId: "0", startTime: "-", endTime: "-", dutyHours: "", OThours: "", NightHalt: "", kms: "" },
+    { dutyId: "1", startTime: "18:30", endTime: "", dutyHours: "", OThours: "", NightHalt: "", kms: "" },
+    { dutyId: "NS/1", startTime: "18:30", endTime: "07:45", dutyHours: "06:15", OThours: "", NightHalt: "125", kms: "538" },
+    { dutyId: "2", startTime: "", endTime: "07:45", dutyHours: "06:15", OThours: "", NightHalt: "125", kms: "538" },
+    { dutyId: "3", startTime: "08:45", endTime: "20:30", dutyHours: "10:30", OThours: "2:30", NightHalt: "15", kms: "503" },
+    { dutyId: "4", startTime: "06:00", endTime: "18:00", dutyHours: "10:30", OThours: "2:30", NightHalt: "", kms: "503" },
+    { dutyId: "9", startTime: "07:30", endTime: "19:30", dutyHours: "09:30", OThours: "1:30", NightHalt: "15", kms: "302" },
+    { dutyId: "10", startTime: "07:00", endTime: "18:50", dutyHours: "09:30", OThours: "1:30", NightHalt: "", kms: "279" },
+    { dutyId: "11", startTime: "06:15", endTime: "16:45", dutyHours: "10:00", OThours: "2:00", NightHalt: "", kms: "386" },
+    { dutyId: "13", startTime: "15:15", endTime: "", dutyHours: "", OThours: "", NightHalt: "", kms: "" },
+    { dutyId: "NS/13", startTime: "21:00", endTime: "07:05", dutyHours: "08:00", OThours: "1:35", NightHalt: "90", kms: "718" },
+    { dutyId: "14", startTime: "", endTime: "12:45", dutyHours: "08:00", OThours: "1:30", NightHalt: "15", kms: "718" },
+    { dutyId: "15", startTime: "16:00", endTime: "", dutyHours: "", OThours: "", NightHalt: "", kms: "" },
+    { dutyId: "NS/15", startTime: "15:15", endTime: "02:30", dutyHours: "06:30", OThours: "1:00", NightHalt: "125", kms: "556" },
+    { dutyId: "16", startTime: "", endTime: "04:15", dutyHours: "06:30", OThours: "", NightHalt: "125", kms: "556" },
+    { dutyId: "19", startTime: "06:00", endTime: "17:30", dutyHours: "10:00", OThours: "2:00", NightHalt: "15", kms: "481" },
+    { dutyId: "20", startTime: "08:00", endTime: "19:30", dutyHours: "10:00", OThours: "2:00", NightHalt: "15", kms: "481" },
+    { dutyId: "21", startTime: "07:10", endTime: "18:40", dutyHours: "10:00", OThours: "2:00", NightHalt: "15", kms: "481" },
+    { dutyId: "22", startTime: "08:00", endTime: "19:30", dutyHours: "10:00", OThours: "2:00", NightHalt: "", kms: "481" },
+    { dutyId: "24", startTime: "06:00", endTime: "17:45", dutyHours: "10:00", OThours: "2:00", NightHalt: "", kms: "386" },
+    { dutyId: "26", startTime: "06:45", endTime: "17:25", dutyHours: "08:30", OThours: "0:30", NightHalt: "15", kms: "382" },
+    { dutyId: "27", startTime: "06:30", endTime: "16:20", dutyHours: "08:30", OThours: "0:30", NightHalt: "", kms: "382" },
+    { dutyId: "29", startTime: "07:30", endTime: "20:15", dutyHours: "10:30", OThours: "2:30", NightHalt: "15", kms: "538" },
+    { dutyId: "30", startTime: "06:45", endTime: "19:45", dutyHours: "10:30", OThours: "2:30", NightHalt: "", kms: "538" },
+    { dutyId: "34", startTime: "07:30", endTime: "18:00", dutyHours: "09:30", OThours: "1:30", NightHalt: "15", kms: "439" },
+    { dutyId: "35", startTime: "07:30", endTime: "19:15", dutyHours: "09:30", OThours: "1:30", NightHalt: "", kms: "439" },
+    { dutyId: "36", startTime: "06:45", endTime: "17:30", dutyHours: "09:30", OThours: "1:30", NightHalt: "15", kms: "420" },
+    { dutyId: "37", startTime: "06:45", endTime: "16:30", dutyHours: "08:30", OThours: "0:30", NightHalt: "", kms: "378" },
+    { dutyId: "39", startTime: "05:30", endTime: "18:30", dutyHours: "10:00", OThours: "2:00", NightHalt: "", kms: "480" },
+    { dutyId: "40", startTime: "07:45", endTime: "19:15", dutyHours: "09:45", OThours: "1:45", NightHalt: "65", kms: "410" },
+    { dutyId: "41", startTime: "07:15", endTime: "19:15", dutyHours: "09:45", OThours: "1:45", NightHalt: "", kms: "410" },
+    { dutyId: "42", startTime: "07:00", endTime: "19:00", dutyHours: "08:45", OThours: "0:45", NightHalt: "15", kms: "240" },
+    { dutyId: "62", startTime: "06:00", endTime: "19:50", dutyHours: "09:45", OThours: "1:45", NightHalt: "", kms: "278" },
+    { dutyId: "43", startTime: "06:50", endTime: "18:45", dutyHours: "09:45", OThours: "1:45", NightHalt: "", kms: "364" },
+    { dutyId: "45", startTime: "07:00", endTime: "16:30", dutyHours: "09:30", OThours: "1:30", NightHalt: "15", kms: "426" },
+    { dutyId: "46", startTime: "08:15", endTime: "18:00", dutyHours: "09:30", OThours: "1:30", NightHalt: "", kms: "426" },
+    { dutyId: "49", startTime: "06:00", endTime: "17:30", dutyHours: "09:45", OThours: "1:45", NightHalt: "", kms: "360" },
+    { dutyId: "51", startTime: "07:30", endTime: "19:05", dutyHours: "09:20", OThours: "1:20", NightHalt: "", kms: "302" },
+    { dutyId: "52", startTime: "08:15", endTime: "17:35", dutyHours: "09:45", OThours: "1:45", NightHalt: "15", kms: "431" },
+    { dutyId: "53", startTime: "07:45", endTime: "16:00", dutyHours: "09:35", OThours: "1:35", NightHalt: "", kms: "482" },
   ];
 
-  constructor(private api: ApiCallsService,private route:Router) {}
+  constructor(private api: ApiCallsService, private route: Router) { }
 
   ngOnInit(): void {
     // Optional: Initial setup or data fetch can be done here
-    console.log(this.filteredDuties)
-
+    console.log(this.filteredDuties);
   }
 
-
   sendFirstFilteredDuty(): void {
-    if (this.filteredDuties.length > 0 && Object.keys(this.filteredDuties[0]).length > 0) {
+    if (
+      this.filteredDuties.length > 0 &&
+      Object.keys(this.filteredDuties[0]).length > 0
+    ) {
       const firstDuty = this.filteredDuties[0];
       console.log("Sending first duty:", firstDuty);
-      
+
       // Uncomment and implement your sending logic
       // this.api.sendDuty(firstDuty).subscribe(response => {
       //   console.log("Duty sent successfully", response);
       // });
     } else {
-      alert('No duties available to send.');
+      alert("No duties available to send.");
     }
   }
-  
+
   searchDutyById(): void {
     if (this.dutyIdSearch.trim()) {
-      const duty = this.dutyListData.find(d => d.dutyId === this.dutyIdSearch);
-      
-      // Reset input after search
-      this.dutyIdSearch = '';
-  
-      if (duty) {
-        const existingDutyIndex = Object.keys(this.filteredDuties[0]).findIndex(key => {
-          const existingDuty = this.filteredDuties[0][key];
-          return existingDuty.dutyId === duty.dutyId;
-        });
-  
-        if (existingDutyIndex !== -1) {
-   
-          console.log("Duty already exists:", this.filteredDuties[0][existingDutyIndex]);
+      const duty = this.dutyListData.find(
+        (d) => d.dutyId === this.dutyIdSearch
+      );
 
+      // Reset input after search
+      this.dutyIdSearch = "";
+
+      if (duty) {
+        const existingDutyIndex = Object.keys(this.filteredDuties[0]).findIndex(
+          (key) => {
+            const existingDuty = this.filteredDuties[0][key];
+            return existingDuty.dutyId === duty.dutyId;
+          }
+        );
+
+        if (existingDutyIndex !== -1) {
+          console.log(
+            "Duty already exists:",
+            this.filteredDuties[0][existingDutyIndex]
+          );
         }
-  
-        const newIndex = Object.keys(this.filteredDuties[0]).length; 
-        this.filteredDuties[0][newIndex] = duty; 
+
+        const newIndex = Object.keys(this.filteredDuties[0]).length;
+        this.filteredDuties[0][newIndex] = duty;
         console.log("Duty added:", duty);
-  
+
         this.sendFirstFilteredDuty();
         this.updateEmployeeData();
         // this.searchEmployeeById();
- 
+
         this.totalValues = false;
-        
       } else {
-        alert('Duty ID not found in the list.');
+        alert("Duty ID not found in the list.");
       }
     } else {
-      alert('Please enter a Duty ID to search.');
+      alert("Please enter a Duty ID to search.");
     }
-  
+
     console.log("Filtered duties:", this.filteredDuties);
   }
-  
-  
-  
- 
-  
 
-  
-  
- 
   searchEmployeeById(): void {
     this.isLoading = true;
     if (this.employeeIdSearch) {
@@ -483,15 +172,14 @@ export class ViewOtComponent implements OnInit {
           if (tasks) {
             this.AllDuty = true;
             this.isLoading = false;
-            this.Eid =this.employeeIdSearch
-         
+            this.Eid = this.employeeIdSearch;
+
             if (Array.isArray(tasks)) {
               this.filteredDuties = tasks;
-             
+
               this.totalValues = false;
-            
             } else {
-              this.filteredDuties = [tasks]; 
+              this.filteredDuties = [tasks];
               // this.calculateTotal()
               this.totalValues = false;
               this.isLoading = false;
@@ -499,40 +187,39 @@ export class ViewOtComponent implements OnInit {
             }
             console.log(this.filteredDuties[0]);
           } else {
-            alert('No tasks found for the given Employee ID.');
-            this.employeeIdSearch ='';
+            alert("No tasks found for the given Employee ID.");
+            this.employeeIdSearch = "";
             this.filteredDuties = [];
             this.isLoading = false;
-            this.Eid ='';
+            this.Eid = "";
           }
         },
         (error) => {
-          alert(`No employee present with this employee ID: ${this.employeeIdSearch}`);
-          console.error('Error fetching tasks:', error);
+          alert(
+            `No employee present with this employee ID: ${this.employeeIdSearch}`
+          );
+          console.error("Error fetching tasks:", error);
           this.filteredDuties = [];
-          this.employeeIdSearch ='';
+          this.employeeIdSearch = "";
           this.isLoading = false;
-          this.Eid ='';
+          this.Eid = "";
         }
       );
     } else {
-      alert('Please enter an Employee ID to search.');
+      alert("Please enter an Employee ID to search.");
       // this.filteredDuties = [];
       this.isLoading = false;
     }
   }
-  
 
   updateEmployeeData(): void {
     this.isLoading = true;
     if (this.filteredDuties.length > 0 && this.employeeIdSearch) {
-      
       const payload = {
         ...this.filteredDuties[0],
         id: this.employeeIdSearch,
-        
       };
-     
+
       this.api.updateTask(payload).subscribe(
         (res) => {
           this.successtxt = true;
@@ -543,98 +230,94 @@ export class ViewOtComponent implements OnInit {
             this.successtxt = false;
             // this.route.navigateByUrl('/')
           }, 3000);
-          console.log('Employee data updated successfully', res);
+          console.log("Employee data updated successfully", res);
         },
         (error) => {
-          alert('Error updating employee data. Please try again or plz enter proper Employee Id.');
-          console.error('Error updating data:', error);
+          alert(
+            "Error updating employee data. Please try again or plz enter proper Employee Id."
+          );
+          console.error("Error updating data:", error);
 
           this.isLoading = false;
         }
       );
     } else {
-      alert('No data to update or Employee ID is missing.');
+      alert("No data to update or Employee ID is missing.");
       this.isLoading = false;
     }
   }
 
   loadDuties(): void {
     const updatedDuties: Duty[] = [];
-  
-    Object.keys(this.filteredDuties[0]).forEach(key => {
+
+    Object.keys(this.filteredDuties[0]).forEach((key) => {
       const duty = this.filteredDuties[0][key];
-      
+
       // Check if duty is valid and has all necessary properties
-      if (duty && typeof duty === 'object' && 'dutyId' in duty) {
+      if (duty && typeof duty === "object" && "dutyId" in duty) {
         updatedDuties.push({
           dutyId: duty.dutyId,
-          startTime: duty.startTime || '', // Ensure all properties are defined
-          endTime: duty.endTime || '',
-          dutyHours: duty.dutyHours || '',
-          OThours: duty.OThours || '',
-          NightHalt: duty.NightHalt || '',
-          kms: duty.kms || '',
-          date:duty.date || '',
-
+          startTime: duty.startTime || "", // Ensure all properties are defined
+          endTime: duty.endTime || "",
+          dutyHours: duty.dutyHours || "",
+          OThours: duty.OThours || "",
+          NightHalt: duty.NightHalt || "",
+          kms: duty.kms || "",
+          date: duty.date || "",
         });
       }
     });
-  
+
     // Update the state to reflect the array format
-    this.filteredDuties = [ ...updatedDuties ]; // Ensure it's an array
+    this.filteredDuties = [...updatedDuties]; // Ensure it's an array
     console.log("Duties loaded:", this.filteredDuties);
   }
-  
 
   deleteDutyie(index: number): void {
-    console.log('Attempting to delete duty at index:', index);
+    console.log("Attempting to delete duty at index:", index);
 
     // Access the filteredDuties object
     const dutiesObject = this.filteredDuties[0]; // Assuming you're using the first object
     const dutiesKeys = Object.keys(dutiesObject); // Get the keys
-  
+
     // Log the keys and their count
-    console.log('Filtered duties keys:', dutiesKeys);
-    console.log('Filtered duties object length:', dutiesKeys.length);
-  
+    console.log("Filtered duties keys:", dutiesKeys);
+    console.log("Filtered duties object length:", dutiesKeys.length);
+
     if (index >= 0 && index < dutiesKeys.length) {
       const dutyKey = dutiesKeys[index]; // Get the actual key
       delete dutiesObject[dutyKey]; // Delete the duty using the key
-  
+
       // Clean up the object to remove undefined properties
       this.filteredDuties[0] = { ...dutiesObject }; // Update the filteredDuties object
-      console.log('Duty deleted successfully', this.filteredDuties);
+      console.log("Duty deleted successfully", this.filteredDuties);
       this.calculateTotal(); // Update totals after deletion
     } else {
-      console.error('Invalid index for deletion:', index);
-      alert('Invalid index for deletion.');
+      console.error("Invalid index for deletion:", index);
+      alert("Invalid index for deletion.");
     }
   }
-  
- 
-  deleteDuty(dutyId: string): void {
 
+  deleteDuty(dutyId: string): void {
     const dutiesArray = Object.values(this.filteredDuties[0]);
-  
-    const filteredArray = dutiesArray.filter(duty => duty.dutyId !== dutyId);
-  
-   
+
+    const filteredArray = dutiesArray.filter((duty) => duty.dutyId !== dutyId);
+
     const updatedDuties: { [key: string]: Duty } = {};
-  
+
     filteredArray.forEach((duty, index) => {
       updatedDuties[index] = duty;
     });
 
     this.filteredDuties[0] = {
       ...updatedDuties,
-      ['id']: this.filteredDuties[0]['id'] 
-    } as any; 
-  
-    console.log('Duty deleted successfully', this.filteredDuties);
+      ["id"]: this.filteredDuties[0]["id"],
+    } as any;
+
+    console.log("Duty deleted successfully", this.filteredDuties);
     this.calculateTotal();
     this.totalValues = false;
   }
-  
 
   calculateTotal() {
     let totalOThours = 0;
@@ -642,186 +325,193 @@ export class ViewOtComponent implements OnInit {
     let totalKms = 0;
     let totalHours = 0;
     let totalMinutes = 0;
-  
+
     // Iterate through the filtered duties and sum the values
     for (const dutyKey of Object.keys(this.filteredDuties[0])) {
       const duty = this.filteredDuties[0][dutyKey];
-  
+
       // Handle duty hours (convert HH:mm format to minutes and sum)
       if (duty.dutyHours) {
-        const [hours, minutes] = duty.dutyHours.split(':').map(Number); // Split the duty hours into hours and minutes
+        const [hours, minutes] = duty.dutyHours.split(":").map(Number); // Split the duty hours into hours and minutes
         totalHours += hours;
         totalMinutes += minutes;
       }
-  
+
       if (duty.OThours) {
-        const [otHours, otMinutes] = duty.OThours.split(':').map(Number); // Split the OT hours into hours and minutes
-        totalOThours += (otHours * 60) + otMinutes; // Convert to total minutes and sum
+        const [otHours, otMinutes] = duty.OThours.split(":").map(Number); // Split the OT hours into hours and minutes
+        totalOThours += otHours * 60 + otMinutes; // Convert to total minutes and sum
       }
-  
+
       // Sum night halt
       totalNightHalt += Number(duty.NightHalt) || 0;
-  
+
       // Sum KMS (convert to number)
       totalKms += Number(duty.kms) || 0;
     }
-  
+
     // Convert totalMinutes to hours if it exceeds 60
     totalHours += Math.floor(totalMinutes / 60);
     totalMinutes = totalMinutes % 60; // remaining minutes after converting to hours
 
     const otTotalHours = Math.floor(totalOThours / 60);
     const otTotalMinutes = totalOThours % 60;
-  
+
     // Format total duty hours in HH:mm
-    const formattedDutyHours = `${String(totalHours).padStart(2, '0')}:${String(totalMinutes).padStart(2, '0')}`;
-    const formattedOThours = `${String(otTotalHours).padStart(2, '0')}:${String(otTotalMinutes).padStart(2, '0')}`;
+    const formattedDutyHours = `${String(totalHours).padStart(2, "0")}:${String(
+      totalMinutes
+    ).padStart(2, "0")}`;
+    const formattedOThours = `${String(otTotalHours).padStart(2, "0")}:${String(
+      otTotalMinutes
+    ).padStart(2, "0")}`;
 
     // Store the totals
     // this.totalValues = {
     //   totalDutyHours: formattedDutyHours,
     //   totalOThours,
-    //   totalNightHalt, 
+    //   totalNightHalt,
     //   totalKms,
     // };
   }
   exportToExcel() {
-    if (!this.filteredDuties || this.filteredDuties.length === 0 || !this.filteredDuties[0]) {
+    if (
+      !this.filteredDuties ||
+      this.filteredDuties.length === 0 ||
+      !this.filteredDuties[0]
+    ) {
       alert("No duties available to export.");
       return;
     }
-  
+
     // Log the filtered duties before processing
     console.log("Filtered Duties: ", this.filteredDuties);
-  
+
     const dutiesArray = Object.values(this.filteredDuties[0]);
-  
+
     // Helper function to format date to dd/mm/yyyy
     const formatDate = (dateString: any) => {
       const date = new Date(dateString);
       if (isNaN(date.getTime())) {
-        return 'Invalid Date';
+        return "Invalid Date";
       }
-      const day = String(date.getDate()).padStart(2, '0');
-      const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
       const year = date.getFullYear();
       return `${day}/${month}/${year}`;
     };
-  
+
     // Helper function to parse formatted date string back to a Date object
     const parseFormattedDate = (dateString: string) => {
-      const [day, month, year] = dateString.split('/').map(Number);
+      const [day, month, year] = dateString.split("/").map(Number);
       return new Date(year, month - 1, day); // Month is 0-indexed in JavaScript Date
     };
-  
+
     // Prepare the table data without headings
     let tableData = dutiesArray.map((duty: Duty) => [
-      formatDate(duty.date),      // Date formatted as dd/mm/yyyy
-      duty.dutyId,                // Schedule No
-      duty.startTime,             // Start Time
-      duty.endTime,               // End Time
-      duty.dutyHours,             // Duty Hours
-      duty.OThours ,    // OT Hours
-      duty.NightHalt ,        // Night Allowance (default to 0 if undefined)
-      duty.kms               // KMS (default to 0 if undefined)
+      formatDate(duty.date), // Date formatted as dd/mm/yyyy
+      duty.dutyId, // Schedule No
+      duty.startTime, // Start Time
+      duty.endTime, // End Time
+      duty.dutyHours, // Duty Hours
+      duty.OThours, // OT Hours
+      duty.NightHalt, // Night Allowance (default to 0 if undefined)
+      duty.kms, // KMS (default to 0 if undefined)
     ]);
-  
+
     // Remove the last entry from the tableData array
     tableData.pop();
-  
+
     // If tableData is empty after removing the last entry, return early
     if (tableData.length === 0) {
       alert("No duties found for exporting.");
       return;
     }
-  
+
     // Log tableData before sorting
     console.log("Table Data before sorting: ", tableData);
-  
+
     // Sort tableData based on the parsed date (first element of each row)
     tableData.sort((a, b) => {
       const dateA = parseFormattedDate(a[0] as string); // Cast to string
       const dateB = parseFormattedDate(b[0] as string); // Cast to string
       return dateA.getTime() - dateB.getTime(); // Sort in ascending order
     });
-  
+
     // Create the indexed table data with indexing based on date
     const indexedTableData = tableData.map((row, index) => [
       // index + 1,                    // SL No based on the order after sorting
-      ...row                        // Spread the rest of the row
+      ...row, // Spread the rest of the row
     ]);
-  
+
     // Log indexedTableData
     console.log("Indexed Table Data: ", indexedTableData);
-  
+
     // Create the worksheet from the indexed array of arrays without headers
     const worksheet = XLSX.utils.aoa_to_sheet(indexedTableData);
-  
+
     const workbook = {
       Sheets: {
-        'Duty Data': worksheet
+        "Duty Data": worksheet,
       },
-      SheetNames: ['Duty Data']
+      SheetNames: ["Duty Data"],
     };
-  
+
     // Export file using employeeIdSearch for file name
     XLSX.writeFile(workbook, `${this.Eid}.xlsx`);
     this.updateEmployeeData();
-}
-
-  
-
-
-TotalAmtOfEmployee() {
-  let totalOThours = 0;
-  let totalNightHalt = 0;
-  let totalKms = 0;
-  let totalHours = 0;
-  let totalMinutes = 0;
-
-  // Iterate through the filtered duties and sum the values
-  for (const dutyKey of Object.keys(this.filteredDuties[0])) {
-    const duty = this.filteredDuties[0][dutyKey];
-
-    // Handle duty hours (convert HH:mm format to minutes and sum)
-    if (duty.dutyHours) {
-      const [hours, minutes] = duty.dutyHours.split(':').map(Number); // Split the duty hours into hours and minutes
-      totalHours += hours;
-      totalMinutes += minutes;
-    }
-
-    // Handle OT hours (convert HH:mm format to minutes and sum)
-    if (duty.OThours) {
-      const [otHours, otMinutes] = duty.OThours.split(':').map(Number); // Split the OT hours into hours and minutes
-      totalOThours += (otHours * 60) + otMinutes; // Convert to total minutes and sum
-    }
-
-    // Sum night halt
-    totalNightHalt += Number(duty.NightHalt) || 0;
-
-    // Sum KMS (convert to number)
-    totalKms += Number(duty.kms) || 0;
   }
 
-  // Convert total minutes to hours if it exceeds 60
-  totalHours += Math.floor(totalMinutes / 60);
-  totalMinutes = totalMinutes % 60; // remaining minutes after converting to hours
+  TotalAmtOfEmployee() {
+    let totalOThours = 0;
+    let totalNightHalt = 0;
+    let totalKms = 0;
+    let totalHours = 0;
+    let totalMinutes = 0;
 
-  // Convert totalOThours from minutes to hours and minutes
-  const otTotalHours = Math.floor(totalOThours / 60);
-  const otTotalMinutes = totalOThours % 60;
+    // Iterate through the filtered duties and sum the values
+    for (const dutyKey of Object.keys(this.filteredDuties[0])) {
+      const duty = this.filteredDuties[0][dutyKey];
 
-  // Format total duty hours in HH:mm
-  const formattedDutyHours = `${String(totalHours).padStart(2, '0')}:${String(totalMinutes).padStart(2, '0')}`;
-  const formattedOThours = `${String(otTotalHours).padStart(2, '0')}:${String(otTotalMinutes).padStart(2, '0')}`;
+      // Handle duty hours (convert HH:mm format to minutes and sum)
+      if (duty.dutyHours) {
+        const [hours, minutes] = duty.dutyHours.split(":").map(Number); // Split the duty hours into hours and minutes
+        totalHours += hours;
+        totalMinutes += minutes;
+      }
 
-  this.totalValues = {
-    totalDutyHours: formattedDutyHours,
-    totalOThours: formattedOThours,
-    totalNightHalt, 
-    totalKms,
-  };
+      // Handle OT hours (convert HH:mm format to minutes and sum)
+      if (duty.OThours) {
+        const [otHours, otMinutes] = duty.OThours.split(":").map(Number); // Split the OT hours into hours and minutes
+        totalOThours += otHours * 60 + otMinutes; // Convert to total minutes and sum
+      }
 
-}
+      // Sum night halt
+      totalNightHalt += Number(duty.NightHalt) || 0;
 
+      // Sum KMS (convert to number)
+      totalKms += Number(duty.kms) || 0;
+    }
+
+    // Convert total minutes to hours if it exceeds 60
+    totalHours += Math.floor(totalMinutes / 60);
+    totalMinutes = totalMinutes % 60; // remaining minutes after converting to hours
+
+    // Convert totalOThours from minutes to hours and minutes
+    const otTotalHours = Math.floor(totalOThours / 60);
+    const otTotalMinutes = totalOThours % 60;
+
+    // Format total duty hours in HH:mm
+    const formattedDutyHours = `${String(totalHours).padStart(2, "0")}:${String(
+      totalMinutes
+    ).padStart(2, "0")}`;
+    const formattedOThours = `${String(otTotalHours).padStart(2, "0")}:${String(
+      otTotalMinutes
+    ).padStart(2, "0")}`;
+
+    this.totalValues = {
+      totalDutyHours: formattedDutyHours,
+      totalOThours: formattedOThours,
+      totalNightHalt,
+      totalKms,
+    };
+  }
 }

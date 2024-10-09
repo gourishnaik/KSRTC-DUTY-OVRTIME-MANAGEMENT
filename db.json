@@ -8,167 +8,205 @@
         "dutyHours": "",
         "OThours": "",
         "NightHalt": "",
-        "kms": "",
-        "date": "2024-09-05"
+        "kms": ""
       },
       "2": {
-        "dutyId": "2",
-        "startTime": "",
-        "endTime": "07:45",
-        "dutyHours": "06:15",
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
         "OThours": "",
-        "NightHalt": "125",
-        "kms": "538",
-        "date": "2024-09-11"
+        "NightHalt": "",
+        "kms": ""
       },
       "3": {
-        "dutyId": "3",
-        "startTime": "08:45",
-        "endTime": "20:30",
-        "dutyHours": "10:30",
-        "OThours": "2:30",
-        "NightHalt": "15",
-        "kms": "503",
-        "date": "2024-09-11"
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
       },
       "4": {
-        "dutyId": "4",
-        "startTime": "06:00",
-        "endTime": "18:00",
-        "dutyHours": "10:30",
-        "OThours": "2:30",
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
         "NightHalt": "",
-        "kms": "503",
-        "date": "2024-09-05"
+        "kms": ""
       },
       "5": {
-        "dutyId": "9",
-        "startTime": "07:30",
-        "endTime": "19:30",
-        "dutyHours": "09:30",
-        "OThours": "1:30",
-        "NightHalt": "15",
-        "kms": "302",
-        "date": "2024-09-14"
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
       },
       "6": {
-        "dutyId": "10",
-        "startTime": "07:00",
-        "endTime": "18:50",
-        "dutyHours": "09:30",
-        "OThours": "1:30",
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
         "NightHalt": "",
-        "kms": "279",
-        "date": "2024-09-06"
+        "kms": ""
       },
       "7": {
-        "dutyId": "11",
-        "startTime": "06:15",
-        "endTime": "16:45",
-        "dutyHours": "10:00",
-        "OThours": "2:00",
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
         "NightHalt": "",
-        "kms": "386",
-        "date": "2024-09-27"
+        "kms": ""
       },
       "8": {
-        "dutyId": "13",
-        "startTime": "15:15",
+        "dutyId": "1",
+        "startTime": "18:30",
         "endTime": "",
         "dutyHours": "",
         "OThours": "",
         "NightHalt": "",
-        "kms": "",
-        "date": "2024-09-27"
+        "kms": ""
       },
       "9": {
-        "dutyId": "NS/13",
-        "startTime": "21:00",
-        "endTime": "07:05",
-        "dutyHours": "08:00",
-        "OThours": "1:35",
-        "NightHalt": "90",
-        "kms": "718",
-        "date": "2024-09-27"
-      },
-      "10": {
-        "dutyId": "14",
-        "startTime": "",
-        "endTime": "12:45",
-        "dutyHours": "08:00",
-        "OThours": "1:30",
-        "NightHalt": "15",
-        "kms": "718",
-        "date": "2024-09-04"
-      },
-      "11": {
-        "dutyId": "15",
-        "startTime": "16:00",
+        "dutyId": "1",
+        "startTime": "18:30",
         "endTime": "",
         "dutyHours": "",
         "OThours": "",
         "NightHalt": "",
-        "kms": "",
-        "date": "2024-09-05"
+        "kms": ""
+      },
+      "10": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "11": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "12": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "13": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "14": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
       },
       "15": {
-        "dutyId": "20",
-        "startTime": "08:00",
-        "endTime": "19:30",
-        "dutyHours": "10:00",
-        "OThours": "2:00",
-        "NightHalt": "15",
-        "kms": "481",
-        "date": "2024-09-06"
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "16": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "17": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "18": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
       },
       "19": {
-        "dutyId": "26",
-        "startTime": "06:45",
-        "endTime": "17:25",
-        "dutyHours": "08:30",
-        "OThours": "0:30",
-        "NightHalt": "15",
-        "kms": "382",
-        "date": "2024-09-23"
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
       },
       "20": {
-        "dutyId": "27",
-        "startTime": "06:30",
-        "endTime": "16:20",
-        "dutyHours": "08:30",
-        "OThours": "0:30",
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
         "NightHalt": "",
-        "kms": "382",
-        "date": "2024-09-27"
+        "kms": ""
       },
       "21": {
-        "dutyId": "2",
-        "startTime": "",
-        "endTime": "07:45",
-        "dutyHours": "06:15",
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
         "OThours": "",
-        "NightHalt": "125",
-        "kms": "538"
+        "NightHalt": "",
+        "kms": ""
       },
       "22": {
-        "dutyId": "30",
-        "startTime": "06:45",
-        "endTime": "19:45",
-        "dutyHours": "10:30",
-        "OThours": "2:30",
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
         "NightHalt": "",
-        "kms": "538",
-        "date": "2024-09-03"
+        "kms": ""
       },
       "23": {
-        "dutyId": "40",
-        "startTime": "07:45",
-        "endTime": "19:15",
-        "dutyHours": "09:45",
-        "OThours": "1:45",
-        "NightHalt": "65",
-        "kms": "410",
-        "date": "2024-09-12"
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
       },
       "24": {
         "dutyId": "1",
@@ -180,68 +218,408 @@
         "kms": ""
       },
       "25": {
-        "dutyId": "9",
-        "startTime": "07:30",
-        "endTime": "19:30",
-        "dutyHours": "09:30",
-        "OThours": "1:30",
-        "NightHalt": "15",
-        "kms": "302"
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
       },
       "26": {
-        "dutyId": "51",
-        "startTime": "07:30",
-        "endTime": "19:05",
-        "dutyHours": "09:20",
-        "OThours": "1:20",
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
         "NightHalt": "",
-        "kms": "302",
-        "date": "2024-09-13"
+        "kms": ""
       },
       "27": {
-        "dutyId": "51",
-        "startTime": "07:30",
-        "endTime": "19:05",
-        "dutyHours": "09:20",
-        "OThours": "1:20",
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
         "NightHalt": "",
-        "kms": "302",
-        "date": "2024-09-13"
+        "kms": ""
       },
       "28": {
-        "dutyId": "40",
-        "startTime": "07:45",
-        "endTime": "19:15",
-        "dutyHours": "09:45",
-        "OThours": "1:45",
-        "NightHalt": "65",
-        "kms": "410",
-        "date": "2024-07-17"
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "29": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
       },
       "30": {
-        "dutyId": "51",
-        "startTime": "07:30",
-        "endTime": "19:05",
-        "dutyHours": "09:20",
-        "OThours": "1:20",
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
         "NightHalt": "",
-        "kms": "302",
-        "date": "2024-09-13"
+        "kms": ""
       },
       "31": {
-        "dutyId": "51",
-        "startTime": "07:30",
-        "endTime": "19:05",
-        "dutyHours": "09:20",
-        "OThours": "1:20",
+        "dutyId": "2",
+        "startTime": "",
+        "endTime": "07:45",
+        "dutyHours": "06:15",
+        "OThours": "",
+        "NightHalt": "125",
+        "kms": "538"
+      },
+      "32": {
+        "dutyId": "2",
+        "startTime": "",
+        "endTime": "07:45",
+        "dutyHours": "06:15",
+        "OThours": "",
+        "NightHalt": "125",
+        "kms": "538"
+      },
+      "33": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
         "NightHalt": "",
-        "kms": "302",
-        "date": "2024-09-13"
+        "kms": ""
       },
       "id": "1712"
     },
     {
       "id": "4646"
+    },
+    {
+      "1": {
+        "dutyId": "51",
+        "startTime": "07:30",
+        "endTime": "19:05",
+        "dutyHours": "09:20",
+        "OThours": "1:20",
+        "NightHalt": "",
+        "kms": "302"
+      },
+      "2": {
+        "dutyId": "52",
+        "startTime": "08:15",
+        "endTime": "17:35",
+        "dutyHours": "09:45",
+        "OThours": "1:45",
+        "NightHalt": "15",
+        "kms": "431"
+      },
+      "3": {
+        "dutyId": "53",
+        "startTime": "07:45",
+        "endTime": "16:00",
+        "dutyHours": "09:35",
+        "OThours": "1:35",
+        "NightHalt": "",
+        "kms": "482"
+      },
+      "4": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "5": {
+        "dutyId": "2",
+        "startTime": "",
+        "endTime": "07:45",
+        "dutyHours": "06:15",
+        "OThours": "",
+        "NightHalt": "125",
+        "kms": "538"
+      },
+      "6": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "7": {
+        "dutyId": "2",
+        "startTime": "",
+        "endTime": "07:45",
+        "dutyHours": "06:15",
+        "OThours": "",
+        "NightHalt": "125",
+        "kms": "538"
+      },
+      "8": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "9": {
+        "dutyId": "51",
+        "startTime": "07:30",
+        "endTime": "19:05",
+        "dutyHours": "09:20",
+        "OThours": "1:20",
+        "NightHalt": "",
+        "kms": "302"
+      },
+      "10": {
+        "dutyId": "52",
+        "startTime": "08:15",
+        "endTime": "17:35",
+        "dutyHours": "09:45",
+        "OThours": "1:45",
+        "NightHalt": "15",
+        "kms": "431"
+      },
+      "11": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "12": {
+        "dutyId": "51",
+        "startTime": "07:30",
+        "endTime": "19:05",
+        "dutyHours": "09:20",
+        "OThours": "1:20",
+        "NightHalt": "",
+        "kms": "302"
+      },
+      "13": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "14": {
+        "dutyId": "2",
+        "startTime": "",
+        "endTime": "07:45",
+        "dutyHours": "06:15",
+        "OThours": "",
+        "NightHalt": "125",
+        "kms": "538"
+      },
+      "15": {
+        "dutyId": "2",
+        "startTime": "",
+        "endTime": "07:45",
+        "dutyHours": "06:15",
+        "OThours": "",
+        "NightHalt": "125",
+        "kms": "538"
+      },
+      "16": {
+        "dutyId": "53",
+        "startTime": "07:45",
+        "endTime": "16:00",
+        "dutyHours": "09:35",
+        "OThours": "1:35",
+        "NightHalt": "",
+        "kms": "482"
+      },
+      "17": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "18": {
+        "dutyId": "53",
+        "startTime": "07:45",
+        "endTime": "16:00",
+        "dutyHours": "09:35",
+        "OThours": "1:35",
+        "NightHalt": "",
+        "kms": "482"
+      },
+      "19": {
+        "dutyId": "53",
+        "startTime": "07:45",
+        "endTime": "16:00",
+        "dutyHours": "09:35",
+        "OThours": "1:35",
+        "NightHalt": "",
+        "kms": "482"
+      },
+      "20": {
+        "dutyId": "53",
+        "startTime": "07:45",
+        "endTime": "16:00",
+        "dutyHours": "09:35",
+        "OThours": "1:35",
+        "NightHalt": "",
+        "kms": "482"
+      },
+      "21": {
+        "dutyId": "53",
+        "startTime": "07:45",
+        "endTime": "16:00",
+        "dutyHours": "09:35",
+        "OThours": "1:35",
+        "NightHalt": "",
+        "kms": "482"
+      },
+      "22": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "23": {
+        "dutyId": "2",
+        "startTime": "",
+        "endTime": "07:45",
+        "dutyHours": "06:15",
+        "OThours": "",
+        "NightHalt": "125",
+        "kms": "538"
+      },
+      "24": {
+        "dutyId": "51",
+        "startTime": "07:30",
+        "endTime": "19:05",
+        "dutyHours": "09:20",
+        "OThours": "1:20",
+        "NightHalt": "",
+        "kms": "302"
+      },
+      "25": {
+        "dutyId": "2",
+        "startTime": "",
+        "endTime": "07:45",
+        "dutyHours": "06:15",
+        "OThours": "",
+        "NightHalt": "125",
+        "kms": "538"
+      },
+      "26": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "27": {
+        "dutyId": "53",
+        "startTime": "07:45",
+        "endTime": "16:00",
+        "dutyHours": "09:35",
+        "OThours": "1:35",
+        "NightHalt": "",
+        "kms": "482"
+      },
+      "28": {
+        "dutyId": "53",
+        "startTime": "07:45",
+        "endTime": "16:00",
+        "dutyHours": "09:35",
+        "OThours": "1:35",
+        "NightHalt": "",
+        "kms": "482"
+      },
+      "29": {
+        "dutyId": "53",
+        "startTime": "07:45",
+        "endTime": "16:00",
+        "dutyHours": "09:35",
+        "OThours": "1:35",
+        "NightHalt": "",
+        "kms": "482"
+      },
+      "30": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "31": {
+        "dutyId": "3",
+        "startTime": "08:45",
+        "endTime": "20:30",
+        "dutyHours": "10:30",
+        "OThours": "2:30",
+        "NightHalt": "15",
+        "kms": "503"
+      },
+      "32": {
+        "dutyId": "3",
+        "startTime": "08:45",
+        "endTime": "20:30",
+        "dutyHours": "10:30",
+        "OThours": "2:30",
+        "NightHalt": "15",
+        "kms": "503"
+      },
+      "33": {
+        "dutyId": "51",
+        "startTime": "07:30",
+        "endTime": "19:05",
+        "dutyHours": "09:20",
+        "OThours": "1:20",
+        "NightHalt": "",
+        "kms": "302"
+      },
+      "34": {
+        "dutyId": "11",
+        "startTime": "06:15",
+        "endTime": "16:45",
+        "dutyHours": "10:00",
+        "OThours": "2:00",
+        "NightHalt": "",
+        "kms": "386"
+      },
+      "35": {
+        "dutyId": "1",
+        "startTime": "18:30",
+        "endTime": "",
+        "dutyHours": "",
+        "OThours": "",
+        "NightHalt": "",
+        "kms": ""
+      },
+      "id": "555"
     }
   ],
   "comments": [],
