@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+
+.custom-snackbar {
+    background-color: black !important;   
+    color: white !important;            
+    max-width: 500px !important;         
+    margin: 0 auto !important;           
+    text-align: center !important;       
+    border-radius: 4px !important;       
+  }
+  
+  .mat-snack-bar-container.custom-snackbar {
+    display: flex;
+    justify-content: flex-end; 
+    padding: 0 !important;   
+  }
+  

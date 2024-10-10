@@ -11,6 +11,8 @@ import { DutyListComponent } from './pages/duty-list/duty-list.component';
 import { FormsModule } from '@angular/forms';
 import { ViewOtComponent } from './pages/view-ot/view-ot.component';
 import { LoaderComponent } from './loader/loader.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { LoaderComponent } from './loader/loader.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

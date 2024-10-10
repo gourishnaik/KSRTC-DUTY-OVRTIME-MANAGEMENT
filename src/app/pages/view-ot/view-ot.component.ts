@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ApiCallsService } from "../api-calls.service";
 import { Router } from "@angular/router";
 import * as XLSX from "xlsx";
+import { MatSnackBar } from '@angular/material/snack-bar';
 interface Duty {
   dutyId: string;
   startTime: string;
@@ -144,13 +145,19 @@ export class ViewOtComponent implements OnInit {
     { dutyId: "12", startTime: "06:00", endTime: "18:30", dutyHours: "10:00", OThours: "2:00", NightHalt: "", kms: "480" },
   ];
 
-  constructor(private api: ApiCallsService, private route: Router) { }
+  constructor(private api: ApiCallsService, private route: Router,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     // Optional: Initial setup or data fetch can be done here
     console.log(this.filteredDuties);
   }
-
+  showSnackbar(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 2000,
+     
+    });
+  }
+  
   sendFirstFilteredDuty(): void {
     if (
       this.filteredDuties.length > 0 &&
@@ -234,7 +241,14 @@ export class ViewOtComponent implements OnInit {
             }
             console.log(this.filteredDuties[0]);
           } else {
-            alert("No tasks found for the given Employee ID.");
+            this.snackBar.open(
+              `No tasks found for the given Employee ID`,
+              'Close', 
+              {
+                duration: 5000,
+                panelClass: ['custom-snackbar',]
+              }
+            );
             this.employeeIdSearch = "";
             this.filteredDuties = [];
             this.isLoading = false;
@@ -242,9 +256,15 @@ export class ViewOtComponent implements OnInit {
           }
         },
         (error) => {
-          alert(
-            `No employee present with this employee ID: ${this.employeeIdSearch}`
+          this.snackBar.open(
+            `No employee present with this employee ID: ${this.employeeIdSearch}`,
+            'Close', 
+            {
+              duration: 5000,
+              panelClass: ['custom-snackbar',]
+            }
           );
+        
           console.error("Error fetching tasks:", error);
           this.filteredDuties = [];
           this.employeeIdSearch = "";
@@ -253,7 +273,16 @@ export class ViewOtComponent implements OnInit {
         }
       );
     } else {
-      alert("Please enter an Employee ID to search.");
+    
+      this.snackBar.open(
+        `Please enter an Employee ID to search !!`,
+        'Close', 
+        {
+          duration: 5000,
+          panelClass: ['custom-snackbar',]
+        }
+      );
+      
       // this.filteredDuties = [];
       this.isLoading = false;
     }
@@ -280,8 +309,13 @@ export class ViewOtComponent implements OnInit {
           console.log("Employee data updated successfully", res);
         },
         (error) => {
-          alert(
-            "Error updating employee data. Please try again or plz enter proper Employee Id."
+          this.snackBar.open(
+            `Error updating employee data. Please try again or plz enter proper Employee Id.`,
+            'Close', 
+            {
+              duration: 5000,
+              panelClass: ['custom-snackbar',]
+            }
           );
           console.error("Error updating data:", error);
 
@@ -289,7 +323,14 @@ export class ViewOtComponent implements OnInit {
         }
       );
     } else {
-      alert("No data to update or Employee ID is missing.");
+      this.snackBar.open(
+        `No data to update or Employee ID is missing.`,
+        'Close', 
+        {
+          duration: 5000,
+          panelClass: ['custom-snackbar',]
+        }
+      );
       this.isLoading = false;
     }
   }
