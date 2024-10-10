@@ -260,7 +260,7 @@ export class ViewOtComponent implements OnInit {
             `No employee present with this employee ID: ${this.employeeIdSearch}`,
             'Close', 
             {
-              duration: 5000,
+              duration: 2000,
               panelClass: ['custom-snackbar',]
             }
           );
@@ -278,7 +278,7 @@ export class ViewOtComponent implements OnInit {
         `Please enter an Employee ID to search !!`,
         'Close', 
         {
-          duration: 5000,
+          duration: 2000,
           panelClass: ['custom-snackbar',]
         }
       );
@@ -313,7 +313,7 @@ export class ViewOtComponent implements OnInit {
             `Error updating employee data. Please try again or plz enter proper Employee Id.`,
             'Close', 
             {
-              duration: 5000,
+              duration:2000,
               panelClass: ['custom-snackbar',]
             }
           );
@@ -327,7 +327,7 @@ export class ViewOtComponent implements OnInit {
         `No data to update or Employee ID is missing.`,
         'Close', 
         {
-          duration: 5000,
+          duration: 2000,
           panelClass: ['custom-snackbar',]
         }
       );
