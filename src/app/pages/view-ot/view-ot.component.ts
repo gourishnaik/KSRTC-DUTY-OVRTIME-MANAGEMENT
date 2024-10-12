@@ -148,15 +148,9 @@ export class ViewOtComponent implements OnInit {
   constructor(private api: ApiCallsService, private route: Router,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    // Optional: Initial setup or data fetch can be done here
     console.log(this.filteredDuties);
   }
-  showSnackbar(message: string) {
-    this.snackBar.open(message, 'Close', {
-      duration: 2000,
-     
-    });
-  }
+ 
   
   sendFirstFilteredDuty(): void {
     if (
@@ -166,10 +160,6 @@ export class ViewOtComponent implements OnInit {
       const firstDuty = this.filteredDuties[0];
       console.log("Sending first duty:", firstDuty);
 
-      // Uncomment and implement your sending logic
-      // this.api.sendDuty(firstDuty).subscribe(response => {
-      //   console.log("Duty sent successfully", response);
-      // });
     } else {
       alert("No duties available to send.");
     }
@@ -181,7 +171,6 @@ export class ViewOtComponent implements OnInit {
         (d) => d.dutyId === this.dutyIdSearch
       );
 
-      // Reset input after search
       this.dutyIdSearch = "";
 
       if (duty) {
@@ -282,8 +271,7 @@ export class ViewOtComponent implements OnInit {
           panelClass: ['custom-snackbar',]
         }
       );
-      
-      // this.filteredDuties = [];
+    
       this.isLoading = false;
     }
   }
