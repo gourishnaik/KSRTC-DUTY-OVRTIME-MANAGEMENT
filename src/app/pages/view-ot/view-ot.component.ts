@@ -520,8 +520,8 @@ export class ViewOtComponent implements OnInit {
 
     // Create the indexed table data with indexing based on date
     const indexedTableData = [
-      ["ದಿನಾಂಕ", "ಕರ್ತವ್ಯ ಸಂಖ್ಯೆ", "ಪ್ರಾರಂಭ ಸಮಯ", "ಮುಕ್ತಯ ಸಮಯ", "ಡ್ಯೂಟಿ ಗಂಟೆಗಳು","ಕಡಿತ ಭತ್ಯೆ", "ಭತ್ಯೆ ಗಂಟೆಗಳು","ಕಡಿತ ಕಿಲೋಮೀಟರ್", "ರಾತ್ರಿ ಭತ್ಯೆ","ಟಪಾಲ ಭತ್ಯೆ", "ಕಿಲೋಮೀಟರ್",], 
-      ...tableData, // Spread the rest of the rows
+      ["ದಿನಾಂಕ", "ಕರ್ತವ್ಯ ಸಂಖ್ಯೆ", "ಪ್ರಾರಂಭ ಸಮಯ", "ಮುಕ್ತಯ ಸಮಯ", "ಡ್ಯೂಟಿ ಗಂಟೆಗಳು","ಕಡಿತ ಭತ್ಯೆ", "ಭತ್ಯೆ ಗಂಟೆಗಳು","ಕಡಿತ ಕಿ.ಮೀ","ರಾತ್ರಿ ಭತ್ಯೆ","ಟ.ಭತ್ಯೆ","ಕಿ.ಮೀ",], 
+      ...tableData, 
     ];
 
     // Log indexedTableData
