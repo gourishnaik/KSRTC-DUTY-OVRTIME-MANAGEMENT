@@ -54,7 +54,7 @@ export class ViewOtComponent implements OnInit {
     date: "",
     kms: "",
   };
-  // Sample duty data
+ 
   dutyListData = [
     { dutyId: "0", startTime: "-", endTime: "-", dutyHours: "", OThours: "", NightHalt: "", kms: "" },
     { dutyId: "1", startTime: "18:30", endTime: "", dutyHours: "", OThours: "", NightHalt: "", kms: "" },
@@ -448,6 +448,8 @@ export class ViewOtComponent implements OnInit {
     //   totalKms,
     // };
   }
+
+
   exportToExcel() {
     if (
       !this.filteredDuties ||
@@ -466,13 +468,14 @@ export class ViewOtComponent implements OnInit {
     // Helper function to format date to dd/mm/yyyy
     const formatDate = (dateString: any) => {
       const date = new Date(dateString);
+      console.log("date iz",date)
       if (isNaN(date.getTime())) {
         return "Invalid Date";
       }
       const day = String(date.getDate()).padStart(2, "0");
       const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
       const year = date.getFullYear();
-      return `${day}/${month}/${year}`;
+      return `${day}`;
     };
 
     // Helper function to parse formatted date string back to a Date object
@@ -488,8 +491,11 @@ export class ViewOtComponent implements OnInit {
       duty.startTime, // Start Time
       duty.endTime, // End Time
       duty.dutyHours, // Duty Hours
+      "",
       duty.OThours, // OT Hours
+      "",
       duty.NightHalt, // Night Allowance (default to 0 if undefined)
+      "",
       duty.kms, // KMS (default to 0 if undefined)
     ]);
 
@@ -513,15 +519,15 @@ export class ViewOtComponent implements OnInit {
     });
 
     // Create the indexed table data with indexing based on date
-    const indexedTableData = tableData.map((row, index) => [
-      // index + 1,                    // SL No based on the order after sorting
-      ...row, // Spread the rest of the row
-    ]);
+    const indexedTableData = [
+      ["ದಿನಾಂಕ", "ಕರ್ತವ್ಯ ಸಂಖ್ಯೆ", "ಪ್ರಾರಂಭ ಸಮಯ", "ಮುಕ್ತಯ ಸಮಯ", "ಡ್ಯೂಟಿ ಗಂಟೆಗಳು","ಕಡಿತ ಭತ್ಯೆ", "ಭತ್ಯೆ ಗಂಟೆಗಳು","ಕಡಿತ ಕಿಲೋಮೀಟರ್", "ರಾತ್ರಿ ಭತ್ಯೆ","ಟಪಾಲ ಭತ್ಯೆ", "ಕಿಲೋಮೀಟರ್",], 
+      ...tableData, // Spread the rest of the rows
+    ];
 
     // Log indexedTableData
     console.log("Indexed Table Data: ", indexedTableData);
 
-    // Create the worksheet from the indexed array of arrays without headers
+    // Create the worksheet from the indexed array of arrays with headers
     const worksheet = XLSX.utils.aoa_to_sheet(indexedTableData);
 
     const workbook = {

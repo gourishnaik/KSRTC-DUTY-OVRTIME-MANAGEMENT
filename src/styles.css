@@ -8,9 +8,3 @@
     border-radius: 4px !important;       
   }
   
-  .mat-snack-bar-container.custom-snackbar {
-    display: flex;
-    justify-content: flex-end; 
-    padding: 0 !important;   
-  }
-  
