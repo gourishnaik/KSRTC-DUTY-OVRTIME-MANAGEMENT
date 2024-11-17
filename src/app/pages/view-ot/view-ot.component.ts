@@ -449,7 +449,6 @@ export class ViewOtComponent implements OnInit {
     // };
   }
 
-
   exportToExcel() {
     if (
       !this.filteredDuties ||
@@ -459,88 +458,86 @@ export class ViewOtComponent implements OnInit {
       alert("No duties available to export.");
       return;
     }
-
+  
     // Log the filtered duties before processing
     console.log("Filtered Duties: ", this.filteredDuties);
-
+  
     const dutiesArray = Object.values(this.filteredDuties[0]);
-
+  
     // Helper function to format date to dd/mm/yyyy
     const formatDate = (dateString: any) => {
       const date = new Date(dateString);
-      console.log("date iz",date)
       if (isNaN(date.getTime())) {
         return "Invalid Date";
       }
       const day = String(date.getDate()).padStart(2, "0");
       const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
       const year = date.getFullYear();
+      // return `${day}/${month}/${year}`;
       return `${day}`;
     };
-
-    // Helper function to parse formatted date string back to a Date object
-    const parseFormattedDate = (dateString: string) => {
-      const [day, month, year] = dateString.split("/").map(Number);
-      return new Date(year, month - 1, day); // Month is 0-indexed in JavaScript Date
-    };
-
+  
+    // Sort dutiesArray by date in descending order
+  
+    dutiesArray.sort((a: any, b: any) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateA.getTime() - dateB.getTime(); // Ascending order
+    });
+  
     // Prepare the table data without headings
     let tableData = dutiesArray.map((duty: Duty) => [
-      formatDate(duty.date), // Date formatted as dd/mm/yyyy
-      duty.dutyId, // Schedule No
-      duty.startTime, // Start Time
-      duty.endTime, // End Time
-      duty.dutyHours, // Duty Hours
+      formatDate(duty.date), // Full date formatted as dd/mm/yyyy
+      duty.dutyId,           // Schedule No
+      duty.startTime,        // Start Time
+      duty.endTime,          // End Time
+      duty.dutyHours,        // Duty Hours
       "",
-      duty.OThours, // OT Hours
+      duty.OThours,          // OT Hours
       "",
-      duty.NightHalt, // Night Allowance (default to 0 if undefined)
+      duty.NightHalt,        // Night Allowance (default to 0 if undefined)
       "",
-      duty.kms, // KMS (default to 0 if undefined)
+      duty.kms,              // KMS (default to 0 if undefined)
     ]);
-
+  
     // Remove the last entry from the tableData array
     tableData.pop();
-
+  
     // If tableData is empty after removing the last entry, return early
     if (tableData.length === 0) {
       alert("No duties found for exporting.");
       return;
     }
-
-    // Log tableData before sorting
-    console.log("Table Data before sorting: ", tableData);
-
-    // Sort tableData based on the parsed date (first element of each row)
-    tableData.sort((a, b) => {
-      const dateA = parseFormattedDate(a[0] as string); // Cast to string
-      const dateB = parseFormattedDate(b[0] as string); // Cast to string
-      return dateA.getTime() - dateB.getTime(); // Sort in ascending order
-    });
-
+  
+    // Log tableData before exporting
+    console.log("Table Data: ", tableData);
+  
     // Create the indexed table data with indexing based on date
     const indexedTableData = [
-      ["ದಿನಾಂಕ", "ಕರ್ತವ್ಯ ಸಂಖ್ಯೆ", "ಪ್ರಾರಂಭ ಸಮಯ", "ಮುಕ್ತಯ ಸಮಯ", "ಡ್ಯೂಟಿ ಗಂಟೆಗಳು","ಕಡಿತ ಭತ್ಯೆ", "ಭತ್ಯೆ ಗಂಟೆಗಳು","ಕಡಿತ ಕಿ.ಮೀ","ರಾತ್ರಿ ಭತ್ಯೆ","ಟ.ಭತ್ಯೆ","ಕಿ.ಮೀ",], 
-      ...tableData, 
+      [
+        "ದಿನಾಂಕ", "ಕರ್ತವ್ಯ ಸಂಖ್ಯೆ", "ಪ್ರಾರಂಭ ಸಮಯ",
+        "ಮುಕ್ತಯ ಸಮಯ", "ಡ್ಯೂಟಿ ಗಂಟೆಗಳು", "ಕಡಿತ ಭತ್ಯೆ",
+        "ಭತ್ಯೆ ಗಂಟೆಗಳು", "ಕಡಿತ ಕಿ.ಮೀ", "ರಾತ್ರಿ ಭತ್ಯೆ",
+        "ಟ.ಭತ್ಯೆ", "ಕಿ.ಮೀ"
+      ], 
+      ...tableData,
     ];
-
-    // Log indexedTableData
-    console.log("Indexed Table Data: ", indexedTableData);
-
+  
     // Create the worksheet from the indexed array of arrays with headers
     const worksheet = XLSX.utils.aoa_to_sheet(indexedTableData);
-
+  
     const workbook = {
       Sheets: {
         "Duty Data": worksheet,
       },
       SheetNames: ["Duty Data"],
     };
-
+  
     // Export file using employeeIdSearch for file name
     XLSX.writeFile(workbook, `${this.Eid}.xlsx`);
     this.updateEmployeeData();
   }
+  
 
   TotalAmtOfEmployee() {
     let totalOThours = 0;
