@@ -102,9 +102,14 @@ font-weight: 700!important;
       
 
     <!-- Message if no results yet -->
-    <p style="text-align: center;" *ngIf="filteredDuties.length === 0" class="text-danger mt-4">
-     Please Enter employee Id
-    </p>
+     <div class="mt-4">
+      <p style="text-align: center;text-align: center;
+      text-transform: uppercase;
+      font-size: 25px;" *ngIf="filteredDuties.length === 0" class="text-danger mt-4">
+       Please Enter employee Id !!!
+      </p>
+     </div>
+   
 
     <!-- <button style="margin-top: 3rem;margin-bottom: 10px;" *ngIf="filteredDuties.length>0" class="btn btn-primary" (click)="TotalAmtOfEmployee()">CALCULATE TOTAL</button> -->
     <!-- <h5 *ngIf="successtxt" style="text-align: center;" class="text-success">EMPLOYEE UPDATED SUCCESSFULLY !!</h5> -->
