@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallsService } from '../api-calls.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-duty-list',
   templateUrl: './duty-list.component.html',
@@ -14,7 +14,7 @@ export class DutyListComponent implements OnInit {
   saving=false
   filteredDuties: any[] = []; 
   searchId: any | null = null; 
-constructor(private api:ApiCallsService){
+constructor(private api:ApiCallsService, private snackBar: MatSnackBar){
 
 }
   ngOnInit(): void {}
@@ -26,50 +26,56 @@ constructor(private api:ApiCallsService){
 
   
 
+  save() {
+    console.warn(this.EmployeeId);
+    this.isLoading = true;
   
-save() {
-  console.warn(this.EmployeeId);
-this.isLoading = true;
-  if (!this.EmployeeId) {
-    alert("Enter employee id");
-    this.isLoading =false
-    return;
-  }
-
-  // if (this.filteredDuties.length === 0) {
-  //   alert("Enter duty details");
-  //   this.isLoading =false
-  //   return;
-  // }
-
-  // Check if the EmployeeId already exists
-  this.api.checkIfEmployeeIdExists(this.EmployeeId).subscribe(existingTasks => {
-    if (existingTasks.length > 0) {
-      // EmployeeId already exists
-      alert("Employee Record already exist plz Change id and save.");
-      this.isLoading =false
-    } else {
-      // Proceed with creating the task if EmployeeId does not exist
-      const payload = {
-        // ...this.filteredDuties,
-        id: this.EmployeeId
-      };
-      this.api.createTask(payload).subscribe((res) => {
+    // Check if EmployeeId is empty
+    if (!this.EmployeeId) {
+      alert("Enter employee id");
+      this.isLoading = false;
+      return;
+    }
+  
+    const payload = {
+      id: this.EmployeeId
+    };
+  
+    // Call the API to create the employee
+    this.api.createEmployee(payload).subscribe(
+      (res) => {
+        console.log(payload);
         this.successtxt = true;
         this.saving = true;
-        this.isLoading =true
+        this.isLoading = false; // End loading state
+        this.snackBar.open(`${res.message}`, 'Close', {
+          duration: 3000,
+          panelClass: ['custom-snackbar']  // Custom class for top snackbar
+        });
+  
         setTimeout(() => {
           this.successtxt = false;
           this.saving = false;
-          this.isLoading =false;
+          this.isLoading = false;
         }, 2000);
-
+  
+        // Reset form fields
         this.filteredDuties = [];
         this.EmployeeId = '';
-      });
-    }
-  });
-}
+      },
+      (err) => {
+        alert(err.error.message)
+        // Handle error
+        this.isLoading = false;
+        this.snackBar.open(`${err.error.message}`, 'Close', {
+          duration: 3000,
+          panelClass: ['custom-snackbar']  // Custom class for top snackbar
+        });
+      }
+    );
+  }
+  
+
 
 
 }

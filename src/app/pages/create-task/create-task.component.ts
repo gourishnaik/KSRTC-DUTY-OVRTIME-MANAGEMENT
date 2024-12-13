@@ -26,25 +26,7 @@ export class CreateTaskComponent implements OnInit{
 
 
   save(): void {
-    if (this.taskForm.valid) {
-    this.api.createTask(this.taskForm.value).subscribe((res=>{
-      this.successtext = true;
-  
-      setTimeout(() => {
-        this.successtext = false;
-        this.taskForm.reset({
-          title: '',
-          description: '',
-          priority: 'low',
-          dueDate: ''
-        });
-      }, 3000);
-    }))
-  }
-     else {
-      console.log('Form is invalid');
-      this.taskForm.markAllAsTouched();
-    }
+
   }
 
 

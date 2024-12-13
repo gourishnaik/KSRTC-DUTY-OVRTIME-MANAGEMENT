@@ -19,4 +19,12 @@
 .uppercase-input {
     text-transform: uppercase;
   }
+  .top-snackbar {
+    top: 10px !important;
+    bottom: auto !important;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
   

@@ -22,14 +22,17 @@ font-weight: 700!important;
 
       <div class="col-md-12 d-flex justify-content-center mt-4"*ngIf="AllDuty">
         <input type="text" [(ngModel)]="dutyIdSearch" class="form-control me-2" placeholder="Enter Schedule No." style="max-width: 300px;" />
-        <button class="btn btn-danger" (click)="searchDutyById()">Add Schedule</button>
+        <button class="btn btn-danger" (click)="AddDutyById()">Add Schedule</button>
       </div>
     </div>
+    <p *ngIf="AllDuty" class="dutywarn">Please don't forget to save data after adding</p>
+    <button  *ngIf="AllDuty" style="background: #ff7100 !important;float: inline-end;
+    border: none !important;" class="btn btn-success" (click)="updateEmployeeData()">SAVE DATA</button>
 
     <h5 *ngIf="AllDuty" style="margin-top: 10px; color: blueviolet;">
       SHOWING DATA FOR EMPLOYEE ID <strong style="color: black;">{{this.Eid}}</strong>
     </h5>
-    
+ 
 
     <!-- Table to display filtered duty details -->
     <table class="table table-bordered mt-4">
@@ -49,6 +52,7 @@ font-weight: 700!important;
         </thead>
         <tbody>
             <!-- <pre>{{ filteredDuties | json }}</pre> -->
+             <!-- <pre>{{this.filteredDuties[0]|json}}</pre> -->
             <ng-container *ngFor="let dutie of this.filteredDuties[0] | keyvalue; let i = index">
               <tr *ngIf="dutie.value.dutyId">
                 <td>{{ i + 1 }}</td>
@@ -81,7 +85,7 @@ font-weight: 700!important;
                   <input type="number" [(ngModel)]="dutie.value.kms" class="form-control" style="max-width: 100px;" />
                 </td>
                 <td>
-                  <button class="btn btn-danger" (click)="deleteDutyie(i)">Delete</button>
+                  <button class="btn btn-danger" (click)="deleteDutyie(dutie)">Delete</button>
                 </td>
               </tr>
             </ng-container>
@@ -90,8 +94,8 @@ font-weight: 700!important;
       </table>
 
       <div class="d-flex justify-content-center"style="margin-bottom:1rem">
-        <button style="background: #ff7100 !important;
-    border: none !important;" class="btn btn-success" (click)="updateEmployeeData()">UPDATE</button>
+        <button  *ngIf="AllDuty" style="background: #ff7100 !important;
+    border: none !important;" class="btn btn-success" (click)="updateEmployeeData()">SAVE DATA</button>
       <button style="margin-left: 8px;"  *ngIf="filteredDuties.length>0" class="btn btn-success ml-2" (click)="exportToExcel()">DOWNLOAD EXCEL</button>
       <button style="margin-left: 8px" (click)="TotalAmtOfEmployee()"  *ngIf="filteredDuties.length>0"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
         CALCULATE TOTAL

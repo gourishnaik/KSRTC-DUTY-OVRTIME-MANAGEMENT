@@ -21,55 +21,47 @@ interface Task {
 
 export class ApiCallsService {
   private jsonapiEndpointUrl = 'http://localhost:3000/Createtask';
+  private KsrtcBackendEndPoint = 'http://localhost:8000/api/KsrtcOtdata'
 
   constructor(private http: HttpClient) { }
 
 
-  createTask(taskData: any): Observable<any> {
-    return this.http.post<any>(this.jsonapiEndpointUrl, taskData);
+  
+  createEmployee(payload: any) {
+    return this.http.post<{ message: string, newId: string }>('http://localhost:8000/api/createEmployee', payload);
   }
   getTasks(): Observable<any[]> {
-    return this.http.get<any[]>(this.jsonapiEndpointUrl);
+    return this.http.get<any[]>(this.KsrtcBackendEndPoint);
   }
  
   
   getTaskById(taskId: string): Observable<any> {
-    return this.http.get<any>(`${this.jsonapiEndpointUrl}/${taskId}`);
+    return this.http.get<any>(`${this.KsrtcBackendEndPoint}/${taskId}`);
   }
   updateTask(updatedTaskData: any): Observable<any> {
     return this.http.put<any>(`${this.jsonapiEndpointUrl}/${updatedTaskData.id}`, updatedTaskData);
   }
  
-
-
-  deleteDuty(taskId: string, dutyId: string): Observable<any> {
-    // Step 1: Fetch the task
-    return this.http.get<Task>(`${this.jsonapiEndpointUrl}/${taskId}`).pipe(
-      switchMap((task) => {
-        // Step 2: Remove the duty
-        const updatedDuties: { [key: string]: Duty } = {};
-        
-        Object.entries(task).forEach(([key, value]) => {
-          if (typeof value === 'object' && value.dutyId !== dutyId) {
-            updatedDuties[key] = value as Duty; // Type assertion
-          }
-        });
-
-        // Step 3: Update the task
-        const updatedTask = {
-          ...task,
-          ...updatedDuties,
-        };
-
-        // Send the updated task back to the server
-        return this.http.put<any>(`${this.jsonapiEndpointUrl}/${taskId}`, updatedTask);
-      })
-    );
+  addDuty(payload:any): Observable<any> {
+    const url = `${this.KsrtcBackendEndPoint}/Newduty`;
+    return this.http.post(url,payload);
   }
-  
 
-  checkIfEmployeeIdExists(employeeId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.jsonapiEndpointUrl}?id=${employeeId}`);
+  
+  deleteDuty(deleteReq:any): Observable<any> {
+    const url = `${this.KsrtcBackendEndPoint}/deleteObject`;
+    return this.http.delete<any>(url,deleteReq);
+  }
+
+  deleteObject(id: string, key: string): Observable<any> {
+    return this.http.delete(`${this.KsrtcBackendEndPoint}/deleteObject`, {
+      body: { id, key }
+    });
+  }
+
+
+  SaveData(data: any): Observable<any> {
+    return this.http.put(`${this.KsrtcBackendEndPoint}/updateData`, data);
   }
 
   
