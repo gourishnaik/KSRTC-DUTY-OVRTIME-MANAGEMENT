@@ -16,9 +16,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
-    CreateTaskComponent,
-    ViewTaskComponent,
-    EditTaskComponent,
     DutyListComponent,
     ViewOtComponent,
     LoaderComponent,
@@ -34,6 +31,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSnackBarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }
