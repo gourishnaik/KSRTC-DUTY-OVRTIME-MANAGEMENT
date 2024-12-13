@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-primary bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" routerLink="/create-task">Create task</a>
+      <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon text-light"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a routerLink="/view-task" class="nav-link active text-light" aria-current="page" style="cursor: pointer;">View task</a>
+          </li>
+          <li class="nav-item">
+            <!-- <a class="nav-link text-light" href="#">Link</a> -->
+          </li>
+          
+        </ul>
+      
+      </div>
+    </div>
+  </nav>
+  
+
+
+
+
+  <!-- card -->
+<div class="container my-4">
+    <div class="card" style="margin-top:100px;">
+      <div class="card-header">
+        update task form
+      </div>
+      <div class="card-body">
+        <form [formGroup]="editForm" >
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="inputName" class="form-label">Title</label>
+              <input type="text" class="form-control" id="inputName" formControlName="title" placeholder="Enter your title"[ngClass]="{'invalid-form-control': !editForm.get('title')?.valid && editForm.get('title')?.touched}">
+              
+            </div>
+            <div class="col-md-6">
+              <label for="inputEmail" class="form-label">Description</label>
+              <input type="text" class="form-control" id="inputEmail" formControlName="description" placeholder="Enter your description"[ngClass]="{'invalid-form-control': !editForm.get('description')?.valid && editForm.get('description')?.touched}">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="inputPhone" class="form-label">Priority Level</label>
+              <select class="form-select" id="inputPhone" formControlName="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="inputDate" class="form-label">Due Date</label>
+              <!-- <input type="date" class="form-control" id="inputDate" formControlName="dueDate"placeholder="Enter your description"[ngClass]="{'invalid-form-control': !editForm.get('dueDate')?.valid && editForm.get('dueDate')?.touched}"> -->
+              <input 
+              type="date" 
+              class="form-control" 
+              id="inputDate" 
+              formControlName="dueDate"
+              [attr.min]="minDate"
+              placeholder="Enter your description"
+              [ngClass]="{'invalid-form-control': !editForm.get('dueDate')?.valid && editForm.get('dueDate')?.touched}"
+            >
+            </div>
+          </div>
+
+          <div style="justify-content: space-between; width: 100%;">
+            <button (click)="update()" type="submit" class="btn btn-dark mt-2" style="margin-right: 10px;">Update</button>
+            <button routerLink="/view-task" type="submit" class="btn btn-warning mt-2">Back</button>
+          </div>
+          
+          
+       
+        </form>
+      </div>
+    </div>
+  </div>
