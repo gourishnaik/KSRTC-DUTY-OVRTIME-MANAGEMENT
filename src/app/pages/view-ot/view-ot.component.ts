@@ -206,6 +206,7 @@ export class ViewOtComponent implements OnInit {
             console.log('Duty added successfully:', response);
             // this.updateEmployeeData();
             this.searchEmployeeById();
+            this.updateEmployeeData()
           },
           (error) => {
             console.error('Error adding duty:', error);
