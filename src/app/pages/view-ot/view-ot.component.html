@@ -16,12 +16,12 @@ font-weight: 700!important;
   <div class="container-fluid">
     <div class="row justify-content-center mt-4">
       <div class="col-md-12 d-flex justify-content-center">
-        <input type="text" [(ngModel)]="employeeIdSearch" class="form-control me-2" placeholder="Enter Employee ID" style="max-width: 300px;" />
+        <input type="text" [(ngModel)]="employeeIdSearch"(keyup)="convertToUppercase()"  class="form-control me-2" placeholder="Enter Employee ID" style="max-width: 300px;" />
         <button class="btn btn-primary" (click)="searchEmployeeById()">Search</button>
       </div>
 
       <div class="col-md-12 d-flex justify-content-center mt-4"*ngIf="AllDuty">
-        <input type="text" [(ngModel)]="dutyIdSearch" class="form-control me-2" placeholder="Enter Schedule No." style="max-width: 300px;" />
+        <input type="text" [(ngModel)]="dutyIdSearch"(keyup)="DutyToUppercase()" class="form-control me-2" placeholder="Enter Schedule No." style="max-width: 300px;" />
         <button class="btn btn-danger" (click)="AddDutyById()">Add Schedule</button>
       </div>
     </div>

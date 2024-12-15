@@ -161,6 +161,22 @@ app.put("/api/KsrtcOtdata/updateData", (req, res) => {
 });
 
 
+// delete everything
+app.post("/api/KsrtcOtdata/resetData", (req, res) => {
+  // Write an empty array to the file
+  fs.writeFile("./ksrtcdata.json", JSON.stringify([], null, 2), (err) => {
+      if (err) {
+          console.error("Error resetting the file", err);
+          return res.status(500).json({ error: "Internal server error." });
+      }
+
+      console.log("ksrtcdata.json has been reset to an empty array.");
+      res.status(200).json({ message: "Data reset successfully." });
+  });
+});
+
+
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server started on http://localhost:${PORT}`);

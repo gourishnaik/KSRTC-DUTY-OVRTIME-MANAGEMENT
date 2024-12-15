@@ -33,7 +33,7 @@ font-weight: 700!important;
       
 
         <!-- <input type="text" [(ngModel)]="EmployeeId" class="form-control me-2" placeholder="Enter Employee ID" style="max-width: 300px;" /> -->
-        <input type="text" 
+        <input type="text"  (keyup)="convertToUppercase()" 
         [(ngModel)]="EmployeeId" 
         class="form-control me-2" 
         placeholder="Enter Employee ID" 
@@ -83,10 +83,24 @@ font-weight: 700!important;
   <!-- Message if no results yet -->
 
 <h5 *ngIf="successtxt" style="text-align: center;"class="text-success mt-2">EMPLOYEE ID SAVED SUCCESSFULLY !!</h5>
-  <div class="d-flex justify-content-center">
-    <button style="background: #ff7100 !important;
-    border: none!important;" class="btn btn-success mt-3"(click)="save()"[disabled]="saving">SAVE</button>
-  </div>
+<div class="d-flex justify-content-center">
+  <button 
+      style="background: #ff7100 !important; border: none !important;" 
+      class="btn btn-success mt-3" 
+      (click)="save()" 
+      [disabled]="saving"
+  >
+      SAVE
+  </button>
+
+  <button  data-bs-toggle="modal" data-bs-target="#exampleModalCenter"
+      style="border: none !important;" 
+      class="btn btn-danger mt-3 ms-3" 
+     >
+      DELETE 
+  </button>
+</div>
+
   
 
 </div>
@@ -98,6 +112,48 @@ font-weight: 700!important;
 
       </div>
   </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header"style="background: #ff7100 !important;
+      color: #fff;
+      font-weight: 800;opacity: 0.8;">
+        <h5 class="modal-title" id="exampleModalLongTitle">DELETE ALL DATA</h5>
+      
+      </div>
+      <div class="modal-body">
+        <div >
+        <p style="font-weight: 700;
+        text-align: center;
+        font-size: 19px;">Are you sure to delete everything?</p>
+        <span >Note - On clicking delete this will delete all the data of this month</span>
+      </div>
+      </div>
+      <div 
+      class="modal-footer justify-content-center" 
+      style="background: #ff7100 !important; color: #fff; font-weight: 800; opacity: 0.8;">
+        <button (click)="DeleteAll()"
+          type="button" 
+          style="border: 1px solid #fff;" 
+          class="btn btn-danger" 
+          data-bs-dismiss="modal">
+          Delete
+        </button>
+        <button 
+          type="button" 
+          style="border: 1px solid #fff;" 
+          class="btn btn-success ms-3" 
+          data-bs-dismiss="modal">
+          Close
+        </button>
+    </div>
+    
+    </div>
+  </div>
+</div>
+
 </div>
 
 <app-loader [isLoading]="isLoading"></app-loader>

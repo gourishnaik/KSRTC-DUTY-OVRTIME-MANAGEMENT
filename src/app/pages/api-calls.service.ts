@@ -63,7 +63,9 @@ export class ApiCallsService {
   SaveData(data: any): Observable<any> {
     return this.http.put(`${this.KsrtcBackendEndPoint}/updateData`, data);
   }
-
+ deleteEverything(){
+  return this.http.post<any>(`${this.KsrtcBackendEndPoint}/resetData`, {});
+ }
   
  
 }

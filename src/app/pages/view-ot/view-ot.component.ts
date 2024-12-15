@@ -379,7 +379,12 @@ export class ViewOtComponent implements OnInit {
     this.filteredDuties = [...updatedDuties]; // Ensure it's an array
     console.log("Duties loaded:", this.filteredDuties);
   }
-
+  convertToUppercase() {
+    this.employeeIdSearch = this.employeeIdSearch.toUpperCase();
+  }
+  DutyToUppercase(){
+    this.dutyIdSearch = this.dutyIdSearch.toUpperCase();
+  }
   deleteDutyie(data:any): void {
   console.log(data.value.date)
   console.log(this.Eid);

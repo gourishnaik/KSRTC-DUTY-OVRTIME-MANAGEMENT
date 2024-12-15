@@ -21,10 +21,20 @@ constructor(private api:ApiCallsService, private snackBar: MatSnackBar){
 
 
 
+  convertToUppercase() {
+    this.EmployeeId = this.EmployeeId.toUpperCase();
+  }
 
 
+  DeleteAll(){
+    this.api.deleteEverything().subscribe((res=>{
+      this.snackBar.open(`${res.message}`, 'Close', {
+        duration: 3000,
+        panelClass: ['custom-snackbar']  
+      });
 
-  
+    }))
+  }
 
   save() {
     console.warn(this.EmployeeId);
