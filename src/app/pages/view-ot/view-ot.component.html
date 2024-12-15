@@ -25,7 +25,11 @@ font-weight: 700!important;
         <button class="btn btn-danger" (click)="AddDutyById()">Add Schedule</button>
       </div>
     </div>
-    <p *ngIf="AllDuty" class="dutywarn">Please don't forget to save data after adding</p>
+    <!-- <p *ngIf="AllDuty" class="dutywarn">Please don't forget to save data after adding</p> -->
+    <p *ngIf="AllDuty" class="dutywarn">
+      <span class="marquee-text">Please don't forget to save data after adding</span>
+    </p>
+    
     <button  *ngIf="AllDuty" style="background: #ff7100 !important;float: inline-end;
     border: none !important;" class="btn btn-success" (click)="updateEmployeeData()">SAVE DATA</button>
 

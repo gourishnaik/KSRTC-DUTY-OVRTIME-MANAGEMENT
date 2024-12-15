@@ -139,27 +139,26 @@ app.post('/api/createEmployee', (req, res) => {
 // update or overwite
 // API endpoint to update the data based on the id
 app.put("/api/KsrtcOtdata/updateData", (req, res) => {
-    const { id, ...updatedData } = req.body;  // Destructure to get id and data to update
-  
-    // Find the index of the object with the matching id
-    const index = users.findIndex(user => user.id === id);
-  
-    if (index !== -1) {
-      // Replace only the matching object, and keep the id
-      users[index] = { id, ...updatedData };
-  
-      // Save the updated data to the file
-      fs.writeFile("./ksrtcdata.json", JSON.stringify(users, null, 2), (err) => {
-        if (err) {
-          return res.status(500).send("Error updating the data");
-        }
-        res.status(200).send("Data updated successfully");
-      });
-    } else {
-      res.status(404).send("ID not found");
-    }
-  });
-  
+  const { id, ...updatedData } = req.body; // Destructure to get id and data to update
+
+  // Find the index of the object with the matching id
+  const index = users.findIndex(user => user.id === id);
+
+  if (index !== -1) {
+    // Replace only the matching object, and keep the id
+    users[index] = { id, ...updatedData };
+
+    // Save the updated data to the file
+    fs.writeFile("./ksrtcdata.json", JSON.stringify(users, null, 2), (err) => {
+      if (err) {
+        return res.status(500).json({ message: "Error updating the data" }); // Return JSON
+      }
+      res.status(200).json({ message: "Data updated successfully" }); // Return JSON
+    });
+  } else {
+    res.status(404).json({ message: "ID not found" }); // Return JSON
+  }
+});
 
 
 // Start the server

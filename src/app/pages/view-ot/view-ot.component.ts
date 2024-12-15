@@ -311,28 +311,36 @@ export class ViewOtComponent implements OnInit {
           this.successtxt = true;
           this.calculateTotal();
           this.isLoading = false;
+          this.snackBar.open(
+            `${res.message}.`,
+            'Close', 
+            {
+              duration:4000,
+              panelClass: ['custom-snackbar',]
+            }
+          );
           this.searchEmployeeById();
-          setTimeout(() => {
-            this.successtxt = false;
-            // this.route.navigateByUrl('/')
-          }, 3000);
+          
+         
           console.log("Employee data updated successfully", res);
         },
         
         (error) => {
-          // this.snackBar.open(
-          //   `Error updating employee data. Please try again or plz enter proper Employee Id.`,
-          //   'Close', 
-          //   {
-          //     duration:2000,
-          //     panelClass: ['custom-snackbar',]
-          //   }
-          // );
+          this.snackBar.open(
+            `Error updating employee data. Please try again or plz enter proper Employee Id.`,
+            'Close', 
+            {
+              duration:2000,
+              panelClass: ['custom-snackbar',]
+            }
+          );
           console.error("Error updating data:", error);
 
           this.isLoading = false;
+          
         }
       );
+      
     } else {
       this.snackBar.open(
         `No data to update or Employee ID is missing.`,
