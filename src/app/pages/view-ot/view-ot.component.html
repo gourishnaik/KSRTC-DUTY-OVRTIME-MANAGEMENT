@@ -61,7 +61,15 @@ font-weight: 700!important;
               <tr *ngIf="dutie.value.dutyId">
                 <td>{{ i + 1 }}</td>
                 <td>
-                  <input type="date" [(ngModel)]="dutie.value.date" class="form-control" style="max-width: 150px;" />
+                  <!-- <input type="date" [(ngModel)]="dutie.value.date" class="form-control" style="max-width: 150px;" /> -->
+                  <input 
+                  type="date" 
+                  [(ngModel)]="dutie.value.date" 
+                  [ngStyle]="{'color': !dutie.value.date ? 'blue' : 'black'}" 
+                  class="form-control" 
+                  style="max-width: 150px;" 
+                />
+                
                 </td>
                 <th scope="row">{{ dutie.value.dutyId }}</th>
                 <td>{{ dutie.value.startTime }}</td>
