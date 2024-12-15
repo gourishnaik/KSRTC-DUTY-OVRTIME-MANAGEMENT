@@ -163,15 +163,39 @@ app.put("/api/KsrtcOtdata/updateData", (req, res) => {
 
 // delete everything
 app.post("/api/KsrtcOtdata/resetData", (req, res) => {
-  // Write an empty array to the file
-  fs.writeFile("./ksrtcdata.json", JSON.stringify([], null, 2), (err) => {
-      if (err) {
-          console.error("Error resetting the file", err);
-          return res.status(500).json({ error: "Internal server error." });
+  // Read the current file content
+  fs.readFile("./ksrtcdata.json", "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading the file", err);
+      return res.status(500).json({ error: "Internal server error." });
+    }
+
+    let jsonData;
+    try {
+      jsonData = JSON.parse(data);
+    } catch (parseErr) {
+      console.error("Error parsing JSON", parseErr);
+      return res.status(500).json({ error: "Internal server error." });
+    }
+
+    // Retain only the id and reset other data
+    const resetData = jsonData.map((item) => {
+      if (item.id) {
+        return { id: item.id };
+      }
+      return {};
+    });
+
+    // Write the updated content back to the file
+    fs.writeFile("./ksrtcdata.json", JSON.stringify(resetData, null, 2), (writeErr) => {
+      if (writeErr) {
+        console.error("Error writing to the file", writeErr);
+        return res.status(500).json({ error: "Internal server error." });
       }
 
-      console.log("ksrtcdata.json has been reset to an empty array.");
-      res.status(200).json({ message: "Data reset successfully." });
+      console.log("ksrtcdata.json has been reset, retaining only IDs.");
+      res.status(200).json({ message: "Data reset successfully, retaining only IDs." });
+    });
   });
 });
 
