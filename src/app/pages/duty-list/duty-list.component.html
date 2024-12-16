@@ -52,33 +52,7 @@ font-weight: 700!important;
   <!-- Table to display filtered duty details -->
 
 
-  <table class="table table-bordered mt-4" *ngIf="filteredDuties.length > 0">
-    <thead>
-      <tr>
-        <th scope="col">SL No</th>
-        <th scope="col">Schedule No</th>
-        <th scope="col">Start time</th>
-        <th scope="col">End Time</th>
-        <th scope="col">Duty hours</th>
-        <th scope="col">OT hours</th>
-        <th scope="col">Night Allowance</th>
-        <th scope="col">KMS</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let duty of filteredDuties; let i =index;">
-        <th>{{i+1}}</th>
-        <th scope="row">{{ duty.dutyId }}</th>
-        <td>{{ duty.startTime }}</td>
-        <td>{{ duty.endTime }}</td>
-        <td>{{ duty.dutyHours }}</td>
-        <td>{{ duty.OThours }}</td>
-        <td>{{duty.NightHalt}}</td>
-        <td>{{duty.kms}}</td>
-       
-    
-    </tbody>
-  </table>
+ 
 
   <!-- Message if no results yet -->
 
