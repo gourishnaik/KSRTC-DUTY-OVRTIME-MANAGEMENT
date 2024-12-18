@@ -5,7 +5,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 backend 
 npm run start 
 
-Run - run json server - json-server --watch db.json
 
 ## Development server
 
