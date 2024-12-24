@@ -11,6 +11,16 @@ td{
     border: 1px solid red!important;
     font-weight: 700!important;
 }
+.red-outline .mat-form-field-outline {
+    border-color: red;
+  }
+  
+  .blue-outline .mat-form-field-outline {
+    border-color: blue;
+  }
+  
+  
+
 .dutywarn {
   overflow: hidden;
   white-space: nowrap;
