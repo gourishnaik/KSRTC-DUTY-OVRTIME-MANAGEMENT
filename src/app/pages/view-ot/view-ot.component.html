@@ -61,14 +61,30 @@ font-weight: 700!important;
               <tr *ngIf="dutie.value.dutyId">
                 <td>{{ i + 1 }}</td>
                 <td>
-                  <!-- <input type="date" [(ngModel)]="dutie.value.date" class="form-control" style="max-width: 150px;" /> -->
-                  <input 
-                  type="date" 
-                  [(ngModel)]="dutie.value.date" 
-                  [ngStyle]="{'color': !dutie.value.date ? 'blue' : 'black'}" 
-                  class="form-control" 
-                  style="max-width: 150px;" 
-                />
+                  <mat-form-field
+                  appearance="outline"
+                  style="max-width: 400px;"
+                  [ngClass]="{
+                    'red-outline': !dutie.value.date,
+                    'blue-outline': dutie.value.date
+                  }"
+                >
+                  <input
+                    style="font-weight: bold;"
+                    matInput
+                    [matDatepicker]="picker"
+                    [(ngModel)]="dutie.value.date"
+                    [value]="dutie.value.date"
+                    [placeholder]="'DD-MM-YYYY'"
+                    required
+                  />
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <p *ngIf="!dutie.value.date" class="text-danger">PLEASE FILL THE DATE</p>
+                </mat-form-field>
+                
+                
+           
                 
                 </td>
                 <th scope="row">{{ dutie.value.dutyId }}</th>
