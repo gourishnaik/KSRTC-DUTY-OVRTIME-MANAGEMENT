@@ -206,7 +206,7 @@ export class ViewOtComponent implements OnInit {
             console.log('Duty added successfully:', response);
             // this.updateEmployeeData();
             this.searchEmployeeById();
-            this.updateEmployeeData()
+            // this.updateEmployeeData()
           },
           (error) => {
             console.error('Error adding duty:', error);
@@ -236,6 +236,7 @@ export class ViewOtComponent implements OnInit {
       this.api.getTaskById(this.employeeIdSearch).subscribe(
         (tasks) => {
           if (tasks) {
+            // this.updateEmployeeData()
             this.AllDuty = true;
             this.isLoading = false;
             this.Eid = this.employeeIdSearch;
@@ -395,6 +396,7 @@ export class ViewOtComponent implements OnInit {
   }
   this.api.deleteObject(this.Eid,data.key).subscribe((res=>{
     this.searchEmployeeById();
+    
     this.snackBar.open('Deleted successfully !', 'Close', {
       duration: 3000,
       panelClass: ['custom-snackbar'],
@@ -459,6 +461,7 @@ export class ViewOtComponent implements OnInit {
   }
 
   exportToExcel() {
+    this.updateEmployeeData();
     if (
       !this.filteredDuties ||
       this.filteredDuties.length === 0 ||
@@ -544,11 +547,12 @@ export class ViewOtComponent implements OnInit {
   
     // Export file using employeeIdSearch for file name
     XLSX.writeFile(workbook, `${this.Eid}.xlsx`);
-    this.updateEmployeeData();
+    // this.updateEmployeeData();
   }
   
 
   TotalAmtOfEmployee() {
+    
     let totalOThours = 0;
     let totalNightHalt = 0;
     let totalKms = 0;
