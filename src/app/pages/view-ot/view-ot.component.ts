@@ -28,8 +28,12 @@ export class ViewOtComponent implements OnInit {
   totalValues: any = null;
   timedropdown = [
     "00:00",
+    "00:05",
+    "00:10",
     "00:15",
     "00:30",
+    "00:40",
+    "00:50",
     "00:45",
     "01:00",
     "01:15",
@@ -73,7 +77,7 @@ export class ViewOtComponent implements OnInit {
     { dutyId: "NS/15", startTime: "15:15", endTime: "02:30", dutyHours: "06:30", OThours: "1:00", NightHalt: "125", kms: "556",date:"" },
     { dutyId: "16", startTime: "", endTime: "04:15", dutyHours: "06:30", OThours: "", NightHalt: "125", kms: "556",date:"" },
     { dutyId: "19", startTime: "06:00", endTime: "17:30", dutyHours: "10:00", OThours: "2:00", NightHalt: "15", kms: "481" ,date:""},
-    { dutyId: "20", startTime: "08:00", endTime: "19:30", dutyHours: "10:00", OThours: "2:00", NightHalt: "15", kms: "481" ,date:""},
+    { dutyId: "20", startTime: "08:00", endTime: "19:30", dutyHours: "10:00", OThours: "2:00", NightHalt: "", kms: "481" ,date:""},
     { dutyId: "21", startTime: "07:10", endTime: "18:40", dutyHours: "10:00", OThours: "2:00", NightHalt: "15", kms: "481",date:"" },
     { dutyId: "22", startTime: "08:00", endTime: "19:30", dutyHours: "10:00", OThours: "2:00", NightHalt: "", kms: "481" ,date:""},
     { dutyId: "24", startTime: "06:00", endTime: "17:45", dutyHours: "10:00", OThours: "2:00", NightHalt: "", kms: "386" ,date:""},
@@ -206,7 +210,7 @@ export class ViewOtComponent implements OnInit {
             console.log('Duty added successfully:', response);
             // this.updateEmployeeData();
             this.searchEmployeeById();
-            // this.updateEmployeeData()
+            this.updateEmployeeData()
           },
           (error) => {
             console.error('Error adding duty:', error);
