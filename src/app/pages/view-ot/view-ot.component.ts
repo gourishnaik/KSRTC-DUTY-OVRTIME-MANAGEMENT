@@ -83,8 +83,8 @@ export class ViewOtComponent implements OnInit {
     { dutyId: "24", startTime: "06:00", endTime: "17:45", dutyHours: "10:00", OThours: "2:00", NightHalt: "", kms: "386" ,date:""},
     { dutyId: "26", startTime: "06:45", endTime: "17:25", dutyHours: "08:30", OThours: "0:30", NightHalt: "15", kms: "382" ,date:""},
     { dutyId: "27", startTime: "06:30", endTime: "16:20", dutyHours: "08:30", OThours: "0:30", NightHalt: "", kms: "382" ,date:""},
-    { dutyId: "29", startTime: "07:30", endTime: "20:15", dutyHours: "10:30", OThours: "2:30", NightHalt: "15", kms: "538",date:"" },
-    { dutyId: "30", startTime: "06:45", endTime: "19:45", dutyHours: "10:30", OThours: "2:30", NightHalt: "", kms: "538" ,date:""},
+    { dutyId: "29", startTime: "07:30", endTime: "20:15", dutyHours: "11:00", OThours: "3:00", NightHalt: "15", kms: "538",date:"" },
+    { dutyId: "30", startTime: "06:45", endTime: "19:45", dutyHours: "11:00", OThours: "3:00", NightHalt: "", kms: "538" ,date:""},
     { dutyId: "34", startTime: "07:30", endTime: "18:00", dutyHours: "09:30", OThours: "1:30", NightHalt: "15", kms: "439",date:"" },
     { dutyId: "35", startTime: "07:30", endTime: "19:15", dutyHours: "09:30", OThours: "1:30", NightHalt: "", kms: "439",date:"" },
     { dutyId: "36", startTime: "06:45", endTime: "17:30", dutyHours: "09:30", OThours: "1:30", NightHalt: "15", kms: "420" ,date:""},
@@ -99,8 +99,8 @@ export class ViewOtComponent implements OnInit {
     { dutyId: "46", startTime: "08:15", endTime: "18:00", dutyHours: "09:30", OThours: "1:30", NightHalt: "", kms: "426",date:"" },
     { dutyId: "49", startTime: "06:00", endTime: "17:30", dutyHours: "09:45", OThours: "1:45", NightHalt: "", kms: "360" ,date:""},
     { dutyId: "51", startTime: "07:30", endTime: "19:05", dutyHours: "09:20", OThours: "1:20", NightHalt: "", kms: "302" ,date:""},
-    { dutyId: "52", startTime: "08:15", endTime: "17:35", dutyHours: "09:45", OThours: "1:45", NightHalt: "15", kms: "431",date:"" },
-    { dutyId: "53", startTime: "07:45", endTime: "16:00", dutyHours: "09:45", OThours: "1:45", NightHalt: "", kms: "431",date:"" },
+    { dutyId: "52", startTime: "08:15", endTime: "17:35", dutyHours: "10:15", OThours: "2:15", NightHalt: "15", kms: "431",date:"" },
+    { dutyId: "53", startTime: "07:45", endTime: "16:00", dutyHours: "10:15", OThours: "2:15", NightHalt: "", kms: "431",date:"" },
     { dutyId: "54", startTime: "05:00", endTime: "16:30", dutyHours: "09:00", OThours: "1:00", NightHalt: "15", kms: "420",date:"" },
     { dutyId: "55", startTime: "08:15", endTime: "19:05", dutyHours: "09:00", OThours: "1:00", NightHalt: "", kms: "420" ,date:""},
     { dutyId: "57", startTime: "06:15", endTime: "18:00", dutyHours: "09:45", OThours: "1:45", NightHalt: "15", kms: "399" ,date:""},
@@ -148,6 +148,8 @@ export class ViewOtComponent implements OnInit {
     { dutyId: "94", startTime: "07:15", endTime: "18:30", dutyHours: "08:45", OThours: "0:45", NightHalt: "15", kms: "390" ,date:""},
     { dutyId: "95", startTime: "07:45", endTime: "16:45", dutyHours: "08:30", OThours: "0:30", NightHalt: "", kms: "378" ,date:""},
     { dutyId: "12", startTime: "06:00", endTime: "18:30", dutyHours: "10:00", OThours: "2:00", NightHalt: "", kms: "480" },
+    { dutyId: "28", startTime: "08:00", endTime: "17:00", dutyHours: "09:00", OThours: "1:00", NightHalt: "", kms: "35" ,date:""},
+    { dutyId: "25", startTime: "08:00", endTime: "17:00", dutyHours: "09:00", OThours: "1:00", NightHalt: "", kms: "35" ,date:""},
   ];
 
   constructor(private api: ApiCallsService, private route: Router,private snackBar: MatSnackBar) { }
