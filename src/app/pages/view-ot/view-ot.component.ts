@@ -67,6 +67,7 @@ export class ViewOtComponent implements OnInit {
     { dutyId: "CRT", startTime: "-", endTime: "-", dutyHours: "", OThours: "", NightHalt: "", kms: "",date:"" },
     { dutyId: "RMP", startTime: "-", endTime: "-", dutyHours: "", OThours: "", NightHalt: "", kms: "",date:"" },
     { dutyId: "BD", startTime: "-", endTime: "-", dutyHours: "", OThours: "", NightHalt: "", kms: "",date:"" },
+    { dutyId: "PART", startTime: "-", endTime: "-", dutyHours: "", OThours: "", NightHalt: "", kms: "",date:"" },
     { dutyId: "1", startTime: "18:30", endTime: "", dutyHours: "", OThours: "", NightHalt: "", kms: "",date:"" },
     { dutyId: "NS/1", startTime: "18:30", endTime: "07:45", dutyHours: "06:15", OThours: "", NightHalt: "125", kms: "538",date:"" },
     { dutyId: "2", startTime: "", endTime: "07:45", dutyHours: "06:15", OThours: "", NightHalt: "125", kms: "538",date:"" },
